@@ -213,6 +213,7 @@
             this.txtCertificacion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCertificacion.HoverState.Parent = this.txtCertificacion;
             this.txtCertificacion.Location = new System.Drawing.Point(848, 307);
+            this.txtCertificacion.MaxLength = 8;
             this.txtCertificacion.Name = "txtCertificacion";
             this.txtCertificacion.PasswordChar = '\0';
             this.txtCertificacion.PlaceholderText = "";
@@ -238,6 +239,7 @@
             this.txtTipo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTipo.HoverState.Parent = this.txtTipo;
             this.txtTipo.Location = new System.Drawing.Point(848, 259);
+            this.txtTipo.MaxLength = 8;
             this.txtTipo.Name = "txtTipo";
             this.txtTipo.PasswordChar = '\0';
             this.txtTipo.PlaceholderText = "";
@@ -263,6 +265,7 @@
             this.txtPotencia.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPotencia.HoverState.Parent = this.txtPotencia;
             this.txtPotencia.Location = new System.Drawing.Point(848, 213);
+            this.txtPotencia.MaxLength = 8;
             this.txtPotencia.Name = "txtPotencia";
             this.txtPotencia.PasswordChar = '\0';
             this.txtPotencia.PlaceholderText = "";
@@ -289,6 +292,7 @@
             this.txtMarca.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMarca.HoverState.Parent = this.txtMarca;
             this.txtMarca.Location = new System.Drawing.Point(848, 115);
+            this.txtMarca.MaxLength = 8;
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.PasswordChar = '\0';
             this.txtMarca.PlaceholderText = "";
@@ -314,6 +318,7 @@
             this.txtIdFuentePoder.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdFuentePoder.HoverState.Parent = this.txtIdFuentePoder;
             this.txtIdFuentePoder.Location = new System.Drawing.Point(848, 68);
+            this.txtIdFuentePoder.MaxLength = 8;
             this.txtIdFuentePoder.Name = "txtIdFuentePoder";
             this.txtIdFuentePoder.PasswordChar = '\0';
             this.txtIdFuentePoder.PlaceholderText = "";
@@ -398,6 +403,7 @@
             this.txtModelo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtModelo.HoverState.Parent = this.txtModelo;
             this.txtModelo.Location = new System.Drawing.Point(848, 163);
+            this.txtModelo.MaxLength = 8;
             this.txtModelo.Name = "txtModelo";
             this.txtModelo.PasswordChar = '\0';
             this.txtModelo.PlaceholderText = "";

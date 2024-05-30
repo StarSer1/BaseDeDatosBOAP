@@ -200,6 +200,7 @@
             this.txtIdFuentePoder.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdFuentePoder.HoverState.Parent = this.txtIdFuentePoder;
             this.txtIdFuentePoder.Location = new System.Drawing.Point(847, 404);
+            this.txtIdFuentePoder.MaxLength = 8;
             this.txtIdFuentePoder.Name = "txtIdFuentePoder";
             this.txtIdFuentePoder.PasswordChar = '\0';
             this.txtIdFuentePoder.PlaceholderText = "";
@@ -225,6 +226,7 @@
             this.txtIdTarjetaMadre.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdTarjetaMadre.HoverState.Parent = this.txtIdTarjetaMadre;
             this.txtIdTarjetaMadre.Location = new System.Drawing.Point(847, 350);
+            this.txtIdTarjetaMadre.MaxLength = 8;
             this.txtIdTarjetaMadre.Name = "txtIdTarjetaMadre";
             this.txtIdTarjetaMadre.PasswordChar = '\0';
             this.txtIdTarjetaMadre.PlaceholderText = "";
@@ -289,6 +291,7 @@
             this.txtIdAlmacenamiento.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdAlmacenamiento.HoverState.Parent = this.txtIdAlmacenamiento;
             this.txtIdAlmacenamiento.Location = new System.Drawing.Point(847, 303);
+            this.txtIdAlmacenamiento.MaxLength = 8;
             this.txtIdAlmacenamiento.Name = "txtIdAlmacenamiento";
             this.txtIdAlmacenamiento.PasswordChar = '\0';
             this.txtIdAlmacenamiento.PlaceholderText = "";
@@ -314,6 +317,7 @@
             this.txtIdProcesador.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdProcesador.HoverState.Parent = this.txtIdProcesador;
             this.txtIdProcesador.Location = new System.Drawing.Point(847, 210);
+            this.txtIdProcesador.MaxLength = 8;
             this.txtIdProcesador.Name = "txtIdProcesador";
             this.txtIdProcesador.PasswordChar = '\0';
             this.txtIdProcesador.PlaceholderText = "";
@@ -339,6 +343,7 @@
             this.txtIdRam.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdRam.HoverState.Parent = this.txtIdRam;
             this.txtIdRam.Location = new System.Drawing.Point(847, 164);
+            this.txtIdRam.MaxLength = 8;
             this.txtIdRam.Name = "txtIdRam";
             this.txtIdRam.PasswordChar = '\0';
             this.txtIdRam.PlaceholderText = "";
@@ -364,6 +369,7 @@
             this.txtModelo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtModelo.HoverState.Parent = this.txtModelo;
             this.txtModelo.Location = new System.Drawing.Point(847, 115);
+            this.txtModelo.MaxLength = 8;
             this.txtModelo.Name = "txtModelo";
             this.txtModelo.PasswordChar = '\0';
             this.txtModelo.PlaceholderText = "";
@@ -389,6 +395,7 @@
             this.txtIdComputadora.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdComputadora.HoverState.Parent = this.txtIdComputadora;
             this.txtIdComputadora.Location = new System.Drawing.Point(847, 68);
+            this.txtIdComputadora.MaxLength = 8;
             this.txtIdComputadora.Name = "txtIdComputadora";
             this.txtIdComputadora.PasswordChar = '\0';
             this.txtIdComputadora.PlaceholderText = "";
@@ -473,6 +480,7 @@
             this.txtIdGrafica.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdGrafica.HoverState.Parent = this.txtIdGrafica;
             this.txtIdGrafica.Location = new System.Drawing.Point(847, 256);
+            this.txtIdGrafica.MaxLength = 8;
             this.txtIdGrafica.Name = "txtIdGrafica";
             this.txtIdGrafica.PasswordChar = '\0';
             this.txtIdGrafica.PlaceholderText = "";

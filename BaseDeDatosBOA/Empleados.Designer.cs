@@ -139,6 +139,7 @@
             this.txtSueldo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSueldo.HoverState.Parent = this.txtSueldo;
             this.txtSueldo.Location = new System.Drawing.Point(844, 299);
+            this.txtSueldo.MaxLength = 8;
             this.txtSueldo.Name = "txtSueldo";
             this.txtSueldo.PasswordChar = '\0';
             this.txtSueldo.PlaceholderText = "";
@@ -205,6 +206,7 @@
             this.txtRFC.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtRFC.HoverState.Parent = this.txtRFC;
             this.txtRFC.Location = new System.Drawing.Point(844, 252);
+            this.txtRFC.MaxLength = 8;
             this.txtRFC.Name = "txtRFC";
             this.txtRFC.PasswordChar = '\0';
             this.txtRFC.PlaceholderText = "";
@@ -231,6 +233,7 @@
             this.txtApellidoM.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtApellidoM.HoverState.Parent = this.txtApellidoM;
             this.txtApellidoM.Location = new System.Drawing.Point(844, 204);
+            this.txtApellidoM.MaxLength = 8;
             this.txtApellidoM.Name = "txtApellidoM";
             this.txtApellidoM.PasswordChar = '\0';
             this.txtApellidoM.PlaceholderText = "";
@@ -257,6 +260,7 @@
             this.txtApellidoP.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtApellidoP.HoverState.Parent = this.txtApellidoP;
             this.txtApellidoP.Location = new System.Drawing.Point(844, 158);
+            this.txtApellidoP.MaxLength = 8;
             this.txtApellidoP.Name = "txtApellidoP";
             this.txtApellidoP.PasswordChar = '\0';
             this.txtApellidoP.PlaceholderText = "";
@@ -283,6 +287,7 @@
             this.txtNombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNombre.HoverState.Parent = this.txtNombre;
             this.txtNombre.Location = new System.Drawing.Point(844, 109);
+            this.txtNombre.MaxLength = 8;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.PasswordChar = '\0';
             this.txtNombre.PlaceholderText = "";
@@ -309,6 +314,7 @@
             this.txtIdEmp.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdEmp.HoverState.Parent = this.txtIdEmp;
             this.txtIdEmp.Location = new System.Drawing.Point(844, 62);
+            this.txtIdEmp.MaxLength = 8;
             this.txtIdEmp.Name = "txtIdEmp";
             this.txtIdEmp.PasswordChar = '\0';
             this.txtIdEmp.PlaceholderText = "";

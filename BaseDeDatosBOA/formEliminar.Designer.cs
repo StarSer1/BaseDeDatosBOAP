@@ -79,6 +79,7 @@
             this.txtId.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtId.HoverState.Parent = this.txtId;
             this.txtId.Location = new System.Drawing.Point(92, 34);
+            this.txtId.MaxLength = 8;
             this.txtId.Name = "txtId";
             this.txtId.PasswordChar = '\0';
             this.txtId.PlaceholderText = "";

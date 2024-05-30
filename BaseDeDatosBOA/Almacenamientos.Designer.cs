@@ -185,6 +185,7 @@
             this.txtVelocidadTrans.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtVelocidadTrans.HoverState.Parent = this.txtVelocidadTrans;
             this.txtVelocidadTrans.Location = new System.Drawing.Point(901, 306);
+            this.txtVelocidadTrans.MaxLength = 8;
             this.txtVelocidadTrans.Name = "txtVelocidadTrans";
             this.txtVelocidadTrans.PasswordChar = '\0';
             this.txtVelocidadTrans.PlaceholderText = "";
@@ -250,6 +251,7 @@
             this.txtFrecuencia.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFrecuencia.HoverState.Parent = this.txtFrecuencia;
             this.txtFrecuencia.Location = new System.Drawing.Point(885, 259);
+            this.txtFrecuencia.MaxLength = 8;
             this.txtFrecuencia.Name = "txtFrecuencia";
             this.txtFrecuencia.PasswordChar = '\0';
             this.txtFrecuencia.PlaceholderText = "";
@@ -276,6 +278,7 @@
             this.txtCapacidad.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCapacidad.HoverState.Parent = this.txtCapacidad;
             this.txtCapacidad.Location = new System.Drawing.Point(885, 211);
+            this.txtCapacidad.MaxLength = 8;
             this.txtCapacidad.Name = "txtCapacidad";
             this.txtCapacidad.PasswordChar = '\0';
             this.txtCapacidad.PlaceholderText = "";
@@ -302,6 +305,7 @@
             this.txtTipo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTipo.HoverState.Parent = this.txtTipo;
             this.txtTipo.Location = new System.Drawing.Point(885, 165);
+            this.txtTipo.MaxLength = 8;
             this.txtTipo.Name = "txtTipo";
             this.txtTipo.PasswordChar = '\0';
             this.txtTipo.PlaceholderText = "";
@@ -327,6 +331,7 @@
             this.txtMarca.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMarca.HoverState.Parent = this.txtMarca;
             this.txtMarca.Location = new System.Drawing.Point(885, 116);
+            this.txtMarca.MaxLength = 8;
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.PasswordChar = '\0';
             this.txtMarca.PlaceholderText = "";
@@ -352,6 +357,7 @@
             this.txtIdAlmacenamiento.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdAlmacenamiento.HoverState.Parent = this.txtIdAlmacenamiento;
             this.txtIdAlmacenamiento.Location = new System.Drawing.Point(885, 69);
+            this.txtIdAlmacenamiento.MaxLength = 8;
             this.txtIdAlmacenamiento.Name = "txtIdAlmacenamiento";
             this.txtIdAlmacenamiento.PasswordChar = '\0';
             this.txtIdAlmacenamiento.PlaceholderText = "";

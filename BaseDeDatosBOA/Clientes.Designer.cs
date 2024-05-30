@@ -45,10 +45,10 @@
             this.txtIdCliente = new Guna.UI2.WinForms.Guna2TextBox();
             this.dgvClientes = new Guna.UI2.WinForms.Guna2DataGridView();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnVerificar = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnEliminar = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnConsulta = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnActualizar = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.btnVerificar = new Guna.UI2.WinForms.Guna2ImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -164,6 +164,7 @@
             this.txtCorreo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCorreo.HoverState.Parent = this.txtCorreo;
             this.txtCorreo.Location = new System.Drawing.Point(842, 258);
+            this.txtCorreo.MaxLength = 8;
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.PasswordChar = '\0';
             this.txtCorreo.PlaceholderText = "";
@@ -189,6 +190,7 @@
             this.txtApellidoM.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtApellidoM.HoverState.Parent = this.txtApellidoM;
             this.txtApellidoM.Location = new System.Drawing.Point(842, 210);
+            this.txtApellidoM.MaxLength = 8;
             this.txtApellidoM.Name = "txtApellidoM";
             this.txtApellidoM.PasswordChar = '\0';
             this.txtApellidoM.PlaceholderText = "";
@@ -214,6 +216,7 @@
             this.txtApellidoP.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtApellidoP.HoverState.Parent = this.txtApellidoP;
             this.txtApellidoP.Location = new System.Drawing.Point(842, 164);
+            this.txtApellidoP.MaxLength = 8;
             this.txtApellidoP.Name = "txtApellidoP";
             this.txtApellidoP.PasswordChar = '\0';
             this.txtApellidoP.PlaceholderText = "";
@@ -239,6 +242,7 @@
             this.txtNombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNombre.HoverState.Parent = this.txtNombre;
             this.txtNombre.Location = new System.Drawing.Point(842, 115);
+            this.txtNombre.MaxLength = 8;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.PasswordChar = '\0';
             this.txtNombre.PlaceholderText = "";
@@ -264,6 +268,7 @@
             this.txtIdCliente.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdCliente.HoverState.Parent = this.txtIdCliente;
             this.txtIdCliente.Location = new System.Drawing.Point(842, 62);
+            this.txtIdCliente.MaxLength = 8;
             this.txtIdCliente.Name = "txtIdCliente";
             this.txtIdCliente.PasswordChar = '\0';
             this.txtIdCliente.PlaceholderText = "";
@@ -283,7 +288,7 @@
             this.dgvClientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(89)))), ((int)(((byte)(97)))));
@@ -343,19 +348,6 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1031, 35);
             this.flowLayoutPanel1.TabIndex = 37;
             // 
-            // btnVerificar
-            // 
-            this.btnVerificar.CheckedState.Parent = this.btnVerificar;
-            this.btnVerificar.HoverState.Parent = this.btnVerificar;
-            this.btnVerificar.Image = global::BaseDeDatosBOA.Properties.Resources.cheque;
-            this.btnVerificar.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnVerificar.Location = new System.Drawing.Point(961, 64);
-            this.btnVerificar.Name = "btnVerificar";
-            this.btnVerificar.PressedState.Parent = this.btnVerificar;
-            this.btnVerificar.Size = new System.Drawing.Size(30, 29);
-            this.btnVerificar.TabIndex = 39;
-            this.btnVerificar.Click += new System.EventHandler(this.btnVerificar_Click);
-            // 
             // btnEliminar
             // 
             this.btnEliminar.CheckedState.Parent = this.btnEliminar;
@@ -391,6 +383,19 @@
             this.btnActualizar.Size = new System.Drawing.Size(41, 30);
             this.btnActualizar.TabIndex = 0;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
+            // btnVerificar
+            // 
+            this.btnVerificar.CheckedState.Parent = this.btnVerificar;
+            this.btnVerificar.HoverState.Parent = this.btnVerificar;
+            this.btnVerificar.Image = global::BaseDeDatosBOA.Properties.Resources.cheque;
+            this.btnVerificar.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnVerificar.Location = new System.Drawing.Point(961, 64);
+            this.btnVerificar.Name = "btnVerificar";
+            this.btnVerificar.PressedState.Parent = this.btnVerificar;
+            this.btnVerificar.Size = new System.Drawing.Size(30, 29);
+            this.btnVerificar.TabIndex = 39;
+            this.btnVerificar.Click += new System.EventHandler(this.btnVerificar_Click);
             // 
             // Clientes
             // 

@@ -185,6 +185,7 @@
             this.txtVelocidadTrans.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtVelocidadTrans.HoverState.Parent = this.txtVelocidadTrans;
             this.txtVelocidadTrans.Location = new System.Drawing.Point(910, 305);
+            this.txtVelocidadTrans.MaxLength = 8;
             this.txtVelocidadTrans.Name = "txtVelocidadTrans";
             this.txtVelocidadTrans.PasswordChar = '\0';
             this.txtVelocidadTrans.PlaceholderText = "";
@@ -250,6 +251,7 @@
             this.txtTamaño.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTamaño.HoverState.Parent = this.txtTamaño;
             this.txtTamaño.Location = new System.Drawing.Point(886, 258);
+            this.txtTamaño.MaxLength = 8;
             this.txtTamaño.Name = "txtTamaño";
             this.txtTamaño.PasswordChar = '\0';
             this.txtTamaño.PlaceholderText = "";
@@ -276,6 +278,7 @@
             this.txtFrecuencia.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFrecuencia.HoverState.Parent = this.txtFrecuencia;
             this.txtFrecuencia.Location = new System.Drawing.Point(886, 210);
+            this.txtFrecuencia.MaxLength = 8;
             this.txtFrecuencia.Name = "txtFrecuencia";
             this.txtFrecuencia.PasswordChar = '\0';
             this.txtFrecuencia.PlaceholderText = "";
@@ -302,6 +305,7 @@
             this.txtTipoRam.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTipoRam.HoverState.Parent = this.txtTipoRam;
             this.txtTipoRam.Location = new System.Drawing.Point(886, 164);
+            this.txtTipoRam.MaxLength = 8;
             this.txtTipoRam.Name = "txtTipoRam";
             this.txtTipoRam.PasswordChar = '\0';
             this.txtTipoRam.PlaceholderText = "";
@@ -327,6 +331,7 @@
             this.txtMarca.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMarca.HoverState.Parent = this.txtMarca;
             this.txtMarca.Location = new System.Drawing.Point(886, 115);
+            this.txtMarca.MaxLength = 8;
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.PasswordChar = '\0';
             this.txtMarca.PlaceholderText = "";
@@ -352,6 +357,7 @@
             this.txtIdRam.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdRam.HoverState.Parent = this.txtIdRam;
             this.txtIdRam.Location = new System.Drawing.Point(886, 68);
+            this.txtIdRam.MaxLength = 8;
             this.txtIdRam.Name = "txtIdRam";
             this.txtIdRam.PasswordChar = '\0';
             this.txtIdRam.PlaceholderText = "";

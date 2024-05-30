@@ -164,6 +164,7 @@
             this.txtStock.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtStock.HoverState.Parent = this.txtStock;
             this.txtStock.Location = new System.Drawing.Point(848, 252);
+            this.txtStock.MaxLength = 8;
             this.txtStock.Name = "txtStock";
             this.txtStock.PasswordChar = '\0';
             this.txtStock.PlaceholderText = "";
@@ -190,6 +191,7 @@
             this.txtPrecioLLegada.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPrecioLLegada.HoverState.Parent = this.txtPrecioLLegada;
             this.txtPrecioLLegada.Location = new System.Drawing.Point(848, 204);
+            this.txtPrecioLLegada.MaxLength = 8;
             this.txtPrecioLLegada.Name = "txtPrecioLLegada";
             this.txtPrecioLLegada.PasswordChar = '\0';
             this.txtPrecioLLegada.PlaceholderText = "";
@@ -216,6 +218,7 @@
             this.txtFechaLlegada.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFechaLlegada.HoverState.Parent = this.txtFechaLlegada;
             this.txtFechaLlegada.Location = new System.Drawing.Point(848, 158);
+            this.txtFechaLlegada.MaxLength = 8;
             this.txtFechaLlegada.Name = "txtFechaLlegada";
             this.txtFechaLlegada.PasswordChar = '\0';
             this.txtFechaLlegada.PlaceholderText = "";
@@ -241,6 +244,7 @@
             this.txtIdComputadora.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdComputadora.HoverState.Parent = this.txtIdComputadora;
             this.txtIdComputadora.Location = new System.Drawing.Point(848, 109);
+            this.txtIdComputadora.MaxLength = 8;
             this.txtIdComputadora.Name = "txtIdComputadora";
             this.txtIdComputadora.PasswordChar = '\0';
             this.txtIdComputadora.PlaceholderText = "";
@@ -266,6 +270,7 @@
             this.txtIdInventario.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdInventario.HoverState.Parent = this.txtIdInventario;
             this.txtIdInventario.Location = new System.Drawing.Point(848, 62);
+            this.txtIdInventario.MaxLength = 8;
             this.txtIdInventario.Name = "txtIdInventario";
             this.txtIdInventario.PasswordChar = '\0';
             this.txtIdInventario.PlaceholderText = "";

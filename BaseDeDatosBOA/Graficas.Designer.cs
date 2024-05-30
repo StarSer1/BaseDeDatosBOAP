@@ -211,6 +211,7 @@
             this.txtVram.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtVram.HoverState.Parent = this.txtVram;
             this.txtVram.Location = new System.Drawing.Point(850, 264);
+            this.txtVram.MaxLength = 8;
             this.txtVram.Name = "txtVram";
             this.txtVram.PasswordChar = '\0';
             this.txtVram.PlaceholderText = "";
@@ -237,6 +238,7 @@
             this.txtTipo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTipo.HoverState.Parent = this.txtTipo;
             this.txtTipo.Location = new System.Drawing.Point(850, 210);
+            this.txtTipo.MaxLength = 8;
             this.txtTipo.Name = "txtTipo";
             this.txtTipo.PasswordChar = '\0';
             this.txtTipo.PlaceholderText = "";
@@ -262,6 +264,7 @@
             this.txtModelo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtModelo.HoverState.Parent = this.txtModelo;
             this.txtModelo.Location = new System.Drawing.Point(850, 164);
+            this.txtModelo.MaxLength = 8;
             this.txtModelo.Name = "txtModelo";
             this.txtModelo.PasswordChar = '\0';
             this.txtModelo.PlaceholderText = "";
@@ -287,6 +290,7 @@
             this.txtMarca.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMarca.HoverState.Parent = this.txtMarca;
             this.txtMarca.Location = new System.Drawing.Point(850, 115);
+            this.txtMarca.MaxLength = 8;
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.PasswordChar = '\0';
             this.txtMarca.PlaceholderText = "";
@@ -312,6 +316,7 @@
             this.txtIdGrafica.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdGrafica.HoverState.Parent = this.txtIdGrafica;
             this.txtIdGrafica.Location = new System.Drawing.Point(850, 68);
+            this.txtIdGrafica.MaxLength = 8;
             this.txtIdGrafica.Name = "txtIdGrafica";
             this.txtIdGrafica.PasswordChar = '\0';
             this.txtIdGrafica.PlaceholderText = "";

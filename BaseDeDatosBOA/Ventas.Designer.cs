@@ -51,10 +51,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnVerificar = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnEliminar = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnConsulta = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnActualizar = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.btnVerificar = new Guna.UI2.WinForms.Guna2ImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -134,6 +134,7 @@
             this.txtIdVenta.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdVenta.HoverState.Parent = this.txtIdVenta;
             this.txtIdVenta.Location = new System.Drawing.Point(848, 62);
+            this.txtIdVenta.MaxLength = 8;
             this.txtIdVenta.Name = "txtIdVenta";
             this.txtIdVenta.PasswordChar = '\0';
             this.txtIdVenta.PlaceholderText = "";
@@ -159,6 +160,7 @@
             this.txtIdEmpleado.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdEmpleado.HoverState.Parent = this.txtIdEmpleado;
             this.txtIdEmpleado.Location = new System.Drawing.Point(848, 109);
+            this.txtIdEmpleado.MaxLength = 8;
             this.txtIdEmpleado.Name = "txtIdEmpleado";
             this.txtIdEmpleado.PasswordChar = '\0';
             this.txtIdEmpleado.PlaceholderText = "";
@@ -184,6 +186,7 @@
             this.txtIdComputadora.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdComputadora.HoverState.Parent = this.txtIdComputadora;
             this.txtIdComputadora.Location = new System.Drawing.Point(848, 158);
+            this.txtIdComputadora.MaxLength = 8;
             this.txtIdComputadora.Name = "txtIdComputadora";
             this.txtIdComputadora.PasswordChar = '\0';
             this.txtIdComputadora.PlaceholderText = "";
@@ -209,6 +212,7 @@
             this.txtIdCliente.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdCliente.HoverState.Parent = this.txtIdCliente;
             this.txtIdCliente.Location = new System.Drawing.Point(848, 204);
+            this.txtIdCliente.MaxLength = 8;
             this.txtIdCliente.Name = "txtIdCliente";
             this.txtIdCliente.PasswordChar = '\0';
             this.txtIdCliente.PlaceholderText = "";
@@ -234,6 +238,7 @@
             this.txtFechaCliente.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFechaCliente.HoverState.Parent = this.txtFechaCliente;
             this.txtFechaCliente.Location = new System.Drawing.Point(848, 252);
+            this.txtFechaCliente.MaxLength = 8;
             this.txtFechaCliente.Name = "txtFechaCliente";
             this.txtFechaCliente.PasswordChar = '\0';
             this.txtFechaCliente.PlaceholderText = "";
@@ -298,6 +303,7 @@
             this.txtPrecioFinal.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPrecioFinal.HoverState.Parent = this.txtPrecioFinal;
             this.txtPrecioFinal.Location = new System.Drawing.Point(848, 299);
+            this.txtPrecioFinal.MaxLength = 8;
             this.txtPrecioFinal.Name = "txtPrecioFinal";
             this.txtPrecioFinal.PasswordChar = '\0';
             this.txtPrecioFinal.PlaceholderText = "";
@@ -324,6 +330,7 @@
             this.txtPrecioBase.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPrecioBase.HoverState.Parent = this.txtPrecioBase;
             this.txtPrecioBase.Location = new System.Drawing.Point(848, 347);
+            this.txtPrecioBase.MaxLength = 8;
             this.txtPrecioBase.Name = "txtPrecioBase";
             this.txtPrecioBase.PasswordChar = '\0';
             this.txtPrecioBase.PlaceholderText = "";
@@ -350,6 +357,7 @@
             this.txtDescuento.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDescuento.HoverState.Parent = this.txtDescuento;
             this.txtDescuento.Location = new System.Drawing.Point(848, 393);
+            this.txtDescuento.MaxLength = 8;
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.PasswordChar = '\0';
             this.txtDescuento.PlaceholderText = "";
@@ -460,19 +468,6 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1031, 35);
             this.flowLayoutPanel1.TabIndex = 29;
             // 
-            // btnVerificar
-            // 
-            this.btnVerificar.CheckedState.Parent = this.btnVerificar;
-            this.btnVerificar.HoverState.Parent = this.btnVerificar;
-            this.btnVerificar.Image = global::BaseDeDatosBOA.Properties.Resources.cheque;
-            this.btnVerificar.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnVerificar.Location = new System.Drawing.Point(967, 64);
-            this.btnVerificar.Name = "btnVerificar";
-            this.btnVerificar.PressedState.Parent = this.btnVerificar;
-            this.btnVerificar.Size = new System.Drawing.Size(30, 29);
-            this.btnVerificar.TabIndex = 39;
-            this.btnVerificar.Click += new System.EventHandler(this.btnVerificar_Click);
-            // 
             // btnEliminar
             // 
             this.btnEliminar.CheckedState.Parent = this.btnEliminar;
@@ -508,6 +503,19 @@
             this.btnActualizar.Size = new System.Drawing.Size(41, 30);
             this.btnActualizar.TabIndex = 0;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
+            // btnVerificar
+            // 
+            this.btnVerificar.CheckedState.Parent = this.btnVerificar;
+            this.btnVerificar.HoverState.Parent = this.btnVerificar;
+            this.btnVerificar.Image = global::BaseDeDatosBOA.Properties.Resources.cheque;
+            this.btnVerificar.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnVerificar.Location = new System.Drawing.Point(967, 64);
+            this.btnVerificar.Name = "btnVerificar";
+            this.btnVerificar.PressedState.Parent = this.btnVerificar;
+            this.btnVerificar.Size = new System.Drawing.Size(30, 29);
+            this.btnVerificar.TabIndex = 39;
+            this.btnVerificar.Click += new System.EventHandler(this.btnVerificar_Click);
             // 
             // Ventas
             // 
