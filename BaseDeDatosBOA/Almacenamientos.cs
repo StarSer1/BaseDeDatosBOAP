@@ -18,6 +18,7 @@ namespace BaseDeDatosBOA
     {
         private CLogica logica;
         List<Almacenamiento> almacenamiento = null;
+        List <T>generica = new List<T>();
 
         public Almacenamientos()
         {
