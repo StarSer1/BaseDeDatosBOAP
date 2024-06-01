@@ -131,8 +131,7 @@ namespace BaseDeDatosBOA
 
         private void Almacenamientos_Load(object sender, EventArgs e)
         {
-            string tabla = "ALMACENAMIENTO";
-            almacenamiento= logica.LoadData(almacenamiento, dgvAlmacenamiento, tabla);
+            almacenamiento= logica.LoadDataAlmacenamiento(almacenamiento, dgvAlmacenamiento);
         }
         private void AbrirEliminar(string tablaDondeViene)
         {
@@ -147,9 +146,8 @@ namespace BaseDeDatosBOA
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
-        {
-            string tabla = "ALMACENAMIENTO";
-            almacenamiento = logica.LoadData(almacenamiento, dgvAlmacenamiento, tabla);
+        { 
+            almacenamiento = logica.LoadDataAlmacenamiento(almacenamiento, dgvAlmacenamiento);
         }
 
         private void btnConsulta_Click(object sender, EventArgs e)

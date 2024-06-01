@@ -17,7 +17,7 @@ namespace BOALogica
         {
             datos = new CDatos();
         }
-        public List<Almacenamiento> LoadData(List<Almacenamiento> datos, Guna2DataGridView dgvX, string Tabla)
+        public List<Almacenamiento> LoadDataAlmacenamiento(List<Almacenamiento> datos, Guna2DataGridView dgvX)
         {
             try
             {
