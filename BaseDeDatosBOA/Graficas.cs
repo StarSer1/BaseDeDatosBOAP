@@ -42,39 +42,23 @@ namespace BaseDeDatosBOA
 
         private void btnInsertar_Click(object sender, EventArgs e)
         {
-            bool checkFormat = logica.CheckAllFormats(txtIdGrafica.Text, @"^G\d+$");
-            if (checkFormat == false)
-            {
-                MessageBox.Show("error de formato en ID");
-            }
-            else
-            {
-                bool checkId = logica.VerifyID(txtIdGrafica.Text, graficas, item => item.IdGrafica.ToString());
-                if (checkId == true)
-                {
-                    Grafica grafica = null;
-                    try
-                    {
-                        grafica = new Grafica
-                        {
-                            IdGrafica = txtIdGrafica.Text,
-                            Marca = txtMarca.Text,
-                            Modelo = txtModelo.Text,
-                            Tipo = txtTipo.Text,
-                            Vram = int.Parse(txtVram.Text),
-                        };
-                        logica.RegistrarGrafica(grafica);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-                logica.ClearTextBoxs(txtIdGrafica, txtMarca, txtModelo, txtTipo, txtVram);
-                txtIdGrafica.Enabled = true;
-                logica.TurnOffLabels(label2, label3, label4, label5);
-                logica.TurnOffTxtB(txtMarca, txtModelo, txtTipo, txtVram);
-            }
+            logica.ProcesarInsertar(
+        txtIdGrafica.Text,
+        graficas,
+        item => item.IdGrafica.ToString(),
+        () => new Grafica
+        {
+            IdGrafica = txtIdGrafica.Text,
+            Marca = txtMarca.Text,
+            Modelo = txtModelo.Text,
+            Tipo = txtTipo.Text,
+            Vram = int.Parse(txtVram.Text)
+        },
+        @"^G\d+$",
+        () => logica.ClearTextBoxs(txtIdGrafica, txtMarca, txtModelo, txtTipo, txtVram),
+        new Control[] { txtIdGrafica },
+        new Control[] { txtMarca, txtModelo, txtTipo, txtVram }
+    );
         }
 
         private void btnModificar_Click(object sender, EventArgs e)

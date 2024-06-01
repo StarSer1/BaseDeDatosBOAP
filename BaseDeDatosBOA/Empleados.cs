@@ -32,41 +32,24 @@ namespace BaseDeDatosBOA
 
         private void btnInsertar_Click(object sender, EventArgs e)
         {
-            bool checkFormat = logica.CheckAllFormats(txtIdEmp.Text, @"^E\d+$");
-            if (checkFormat == false)
-            {
-                MessageBox.Show("error de formato en ID");
-            }
-            else
-            {
-                bool checkId = logica.VerifyID(txtIdEmp.Text, empleados, item => item.IdEmpleado.ToString());
-                if (checkId == true)
-                {
-                    Empleado empleado = null;
-                    try
-                    {
-                        empleado = new Empleado
-                        {
-                            IdEmpleado = txtIdEmp.Text,
-                            Nombre = txtNombre.Text,
-                            ApellidoP = txtApellidoP.Text,
-                            ApellidoM = txtApellidoM.Text,
-                            RFC = txtRFC.Text,
-                            Sueldo = int.Parse(txtSueldo.Text),
-                        };
-                        logica.RegistrarEmpleado(empleado);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-                
-                logica.ClearTextBoxs(this.Controls.OfType<Guna2TextBox>().ToArray());
-                txtIdEmp.Enabled = true;
-                logica.TurnOffLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                logica.TurnOffTxtB(this.Controls.OfType<Guna2TextBox>().Where((button) => button.Name.ToString() != "txtIdEmp").ToArray());
-            }
+            logica.ProcesarInsertar(
+       txtIdEmp.Text,
+       empleados,
+       item => item.IdEmpleado.ToString(),
+       () => new Empleado
+       {
+           IdEmpleado = txtIdEmp.Text,
+           Nombre = txtNombre.Text,
+           ApellidoP = txtApellidoP.Text,
+           ApellidoM = txtApellidoM.Text,
+           RFC = txtRFC.Text,
+           Sueldo = int.Parse(txtSueldo.Text)
+       },
+       @"^E\d+$",
+       () => logica.ClearTextBoxs(this.Controls.OfType<Guna2TextBox>().ToArray()),
+       new Control[] { txtIdEmp },
+       this.Controls.OfType<Control>().Where(c => c.Name != "txtIdEmp" && c is Guna2TextBox).ToArray()
+   );
         }
 
         private void btnModificar_Click(object sender, EventArgs e)

@@ -47,46 +47,31 @@ namespace BaseDeDatosBOA
         //            }
         //            break;
         //    }
-            
+
         //}
 
-      
+
         private void btnInsertar_Click(object sender, EventArgs e)
         {
-            bool checkFormat = logica.CheckAllFormats(txtIdAlmacenamiento.Text, @"^A\d+$");
-            if (checkFormat == false)
-            {
-                MessageBox.Show("error de formato en ID");
-            }
-            else
-            {
-                bool checkId = logica.VerifyID(txtIdAlmacenamiento.Text, almacenamiento, item => item.IdAlmacenamiento.ToString());
-                if (checkId == true)
-                {
-                    try
-                    {
-                        Almacenamiento almacenamiento = null;
-                        almacenamiento = new Almacenamiento
-                        {
-                            IdAlmacenamiento = txtIdAlmacenamiento.Text,
-                            Marca = txtMarca.Text,
-                            Tipo = txtTipo.Text,
-                            Capacidad = int.Parse(txtCapacidad.Text),
-                            Frecuencia = int.Parse(txtFrecuencia.Text),
-                            VelocidadTransferencia = int.Parse(txtVelocidadTrans.Text)
-                        };
-                        logica.RegistrarAlmacenamiento(almacenamiento);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    txtIdAlmacenamiento.Enabled = true;
-                    logica.ClearTextBoxs(this.Controls.OfType<Guna2TextBox>().ToArray());
-                    logica.TurnOffLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                    logica.TurnOffTxtB(this.Controls.OfType<Guna2TextBox>().Where((button) => button.Name.ToString() != "txtIdAlmacenamiento").ToArray());
-                }
-            }
+            logica.ProcesarInsertar(
+         txtIdAlmacenamiento.Text,
+         almacenamiento,
+         item => item.IdAlmacenamiento.ToString(),
+         () => new Almacenamiento
+         {
+             IdAlmacenamiento = txtIdAlmacenamiento.Text,
+             Marca = txtMarca.Text,
+             Tipo = txtTipo.Text,
+             Capacidad = int.Parse(txtCapacidad.Text),
+             Frecuencia = int.Parse(txtFrecuencia.Text),
+             VelocidadTransferencia = int.Parse(txtVelocidadTrans.Text)
+         },
+         @"^A\d+$",
+         () => logica.ClearTextBoxs(this.Controls.OfType<Guna2TextBox>().ToArray()),
+         new Control[] { txtIdAlmacenamiento },
+         this.Controls.OfType<Control>().Where(c => c.Name != "txtIdAlmacenamiento" && c is Guna2TextBox).ToArray()
+          );
+
         }
 
        

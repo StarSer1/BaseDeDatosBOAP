@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvVentas = new Guna.UI2.WinForms.Guna2DataGridView();
             this.txtIdVenta = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtIdEmpleado = new Guna.UI2.WinForms.Guna2TextBox();
@@ -61,30 +61,30 @@
             // 
             // dgvVentas
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvVentas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.dgvVentas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvVentas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvVentas.BackgroundColor = System.Drawing.Color.White;
             this.dgvVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvVentas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(89)))), ((int)(((byte)(97)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(89)))), ((int)(((byte)(97)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvVentas.ColumnHeadersHeight = 20;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvVentas.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvVentas.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvVentas.EnableHeadersVisualStyles = false;
             this.dgvVentas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvVentas.Location = new System.Drawing.Point(27, 62);
@@ -134,7 +134,6 @@
             this.txtIdVenta.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdVenta.HoverState.Parent = this.txtIdVenta;
             this.txtIdVenta.Location = new System.Drawing.Point(848, 62);
-            this.txtIdVenta.MaxLength = 8;
             this.txtIdVenta.Name = "txtIdVenta";
             this.txtIdVenta.PasswordChar = '\0';
             this.txtIdVenta.PlaceholderText = "";
@@ -160,7 +159,6 @@
             this.txtIdEmpleado.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdEmpleado.HoverState.Parent = this.txtIdEmpleado;
             this.txtIdEmpleado.Location = new System.Drawing.Point(848, 109);
-            this.txtIdEmpleado.MaxLength = 8;
             this.txtIdEmpleado.Name = "txtIdEmpleado";
             this.txtIdEmpleado.PasswordChar = '\0';
             this.txtIdEmpleado.PlaceholderText = "";
@@ -186,7 +184,6 @@
             this.txtIdComputadora.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdComputadora.HoverState.Parent = this.txtIdComputadora;
             this.txtIdComputadora.Location = new System.Drawing.Point(848, 158);
-            this.txtIdComputadora.MaxLength = 8;
             this.txtIdComputadora.Name = "txtIdComputadora";
             this.txtIdComputadora.PasswordChar = '\0';
             this.txtIdComputadora.PlaceholderText = "";
@@ -212,7 +209,6 @@
             this.txtIdCliente.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdCliente.HoverState.Parent = this.txtIdCliente;
             this.txtIdCliente.Location = new System.Drawing.Point(848, 204);
-            this.txtIdCliente.MaxLength = 8;
             this.txtIdCliente.Name = "txtIdCliente";
             this.txtIdCliente.PasswordChar = '\0';
             this.txtIdCliente.PlaceholderText = "";
@@ -238,7 +234,7 @@
             this.txtFechaCliente.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFechaCliente.HoverState.Parent = this.txtFechaCliente;
             this.txtFechaCliente.Location = new System.Drawing.Point(848, 252);
-            this.txtFechaCliente.MaxLength = 8;
+            this.txtFechaCliente.MaxLength = 10;
             this.txtFechaCliente.Name = "txtFechaCliente";
             this.txtFechaCliente.PasswordChar = '\0';
             this.txtFechaCliente.PlaceholderText = "";
@@ -303,7 +299,6 @@
             this.txtPrecioFinal.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPrecioFinal.HoverState.Parent = this.txtPrecioFinal;
             this.txtPrecioFinal.Location = new System.Drawing.Point(848, 299);
-            this.txtPrecioFinal.MaxLength = 8;
             this.txtPrecioFinal.Name = "txtPrecioFinal";
             this.txtPrecioFinal.PasswordChar = '\0';
             this.txtPrecioFinal.PlaceholderText = "";
@@ -330,7 +325,6 @@
             this.txtPrecioBase.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPrecioBase.HoverState.Parent = this.txtPrecioBase;
             this.txtPrecioBase.Location = new System.Drawing.Point(848, 347);
-            this.txtPrecioBase.MaxLength = 8;
             this.txtPrecioBase.Name = "txtPrecioBase";
             this.txtPrecioBase.PasswordChar = '\0';
             this.txtPrecioBase.PlaceholderText = "";
@@ -357,7 +351,6 @@
             this.txtDescuento.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDescuento.HoverState.Parent = this.txtDescuento;
             this.txtDescuento.Location = new System.Drawing.Point(848, 393);
-            this.txtDescuento.MaxLength = 8;
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.PasswordChar = '\0';
             this.txtDescuento.PlaceholderText = "";

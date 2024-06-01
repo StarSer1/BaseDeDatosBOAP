@@ -32,40 +32,24 @@ namespace BaseDeDatosBOA
 
         private void btnInsertar_Click(object sender, EventArgs e)
         {
-            bool checkFormat = logica.CheckAllFormats(txtIdFuentePoder.Text, @"^F\d+$");
-            if (checkFormat == false)
-            {
-                MessageBox.Show("error de formato en ID");
-            }
-            else
-            {
-                bool checkId = logica.VerifyID(txtIdFuentePoder.Text, fuentesPoder, item => item.IdFuentePoder.ToString());
-                if (checkId == true)
-                {
-                    try
-                    {
-                        FuentePoder fuentePoder = null;
-                        fuentePoder = new FuentePoder
-                        {
-                            IdFuentePoder = txtIdFuentePoder.Text,
-                            Marca = txtMarca.Text,
-                            Modelo = txtModelo.Text,
-                            Potencia = int.Parse(txtPotencia.Text),
-                            Tipo = txtTipo.Text,
-                            Certificacion = txtCertificacion.Text,
-                        };
-                        logica.RegistrarFuentesPoder(fuentePoder);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    logica.ClearTextBoxs(this.Controls.OfType<Guna2TextBox>().ToArray());
-                    txtIdFuentePoder.Enabled = true;
-                    logica.TurnOffLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                    logica.TurnOffTxtB(this.Controls.OfType<Guna2TextBox>().Where((button) => button.Name.ToString() != "txtIdFuentePoder").ToArray());
-                }
-            }
+            logica.ProcesarInsertar(
+         txtIdFuentePoder.Text,
+         fuentesPoder,
+         item => item.IdFuentePoder.ToString(),
+         () => new FuentePoder
+         {
+             IdFuentePoder = txtIdFuentePoder.Text,
+             Marca = txtMarca.Text,
+             Modelo = txtModelo.Text,
+             Potencia = int.Parse(txtPotencia.Text),
+             Tipo = txtTipo.Text,
+             Certificacion = txtCertificacion.Text
+         },
+         @"^F\d+$",
+         () => logica.ClearTextBoxs(this.Controls.OfType<Guna2TextBox>().ToArray()),
+         new Control[] { txtIdFuentePoder },
+         this.Controls.OfType<Control>().Where(c => c.Name != "txtIdFuentePoder" && c is Guna2TextBox).ToArray()
+     );
         }
 
         private void btnModificar_Click(object sender, EventArgs e)

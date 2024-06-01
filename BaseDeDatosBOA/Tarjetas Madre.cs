@@ -38,40 +38,24 @@ namespace BaseDeDatosBOA
 
         private void btnInsertar_Click(object sender, EventArgs e)
         {
-            bool checkFormat = logica.CheckAllFormats(txtIdTarjetaMadre.Text, @"^T\d+$");
-            if (checkFormat == false)
-            {
-                MessageBox.Show("Error de formato en el ID");
-            }
-            else
-            {
-                bool checkId = logica.VerifyID(txtIdTarjetaMadre.Text, tarjetasMadres, item => item.IdTarjetaMadre.ToString());
-                if (checkId == true)
-                {
-                    TarjetaMadre tarjetaMadre = null;
-                    try
-                    {
-                        tarjetaMadre = new TarjetaMadre
-                        {
-                            IdTarjetaMadre = txtIdTarjetaMadre.Text,
-                            Marca = txtMarca.Text,
-                            Modelo = txtIdModelo.Text,
-                            RanurasDIMM = int.Parse(txtRanurasDIMM.Text),
-                            Socket = txtSocket.Text,
-                            Dimensiones = txtDimensiones.Text,
-                        };
-                        logica.RegistrarTarjetasMadre(tarjetaMadre);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-                logica.ClearTextBoxs(this.Controls.OfType<Guna2TextBox>().ToArray());
-                txtIdTarjetaMadre.Enabled = true;
-                logica.TurnOffLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                logica.TurnOffTxtB(this.Controls.OfType<Guna2TextBox>().Where((button) => button.Name.ToString() != "txtIdTarjetaMadre").ToArray());
-            }
+            logica.ProcesarInsertar(
+        txtIdTarjetaMadre.Text,
+        tarjetasMadres,
+        item => item.IdTarjetaMadre.ToString(),
+        () => new TarjetaMadre
+        {
+            IdTarjetaMadre = txtIdTarjetaMadre.Text,
+            Marca = txtMarca.Text,
+            Modelo = txtIdModelo.Text,
+            RanurasDIMM = int.Parse(txtRanurasDIMM.Text),
+            Socket = txtSocket.Text,
+            Dimensiones = txtDimensiones.Text
+        },
+        @"^T\d+$",
+        () => logica.ClearTextBoxs(this.Controls.OfType<Guna2TextBox>().ToArray()),
+        new Control[] { txtIdTarjetaMadre },
+        this.Controls.OfType<Control>().Where(c => c.Name != "txtIdTarjetaMadre" && c is Guna2TextBox).ToArray()
+    );
         }
 
         private void btnModificar_Click(object sender, EventArgs e)

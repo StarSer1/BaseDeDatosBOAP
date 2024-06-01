@@ -37,44 +37,23 @@ namespace BaseDeDatosBOA
         }
         private void btnInsertar_Click(object sender, EventArgs e)
         {
-            List<Computadora> comp = logica.ObtenerComputadoras();
-            bool checkExistence = logica.CheckExistenciaInventario(txtIdComputadora.Text, comp);
-            if (checkExistence == true)
-            {
-                bool checkFormat = logica.CheckAllFormats(txtIdInventario.Text, @"^I\d+$");
-                if (checkFormat == false)
-                {
-                    MessageBox.Show("error de formato en ID");
-                }
-                else
-                {
-                    bool checkId = logica.VerifyID(txtIdInventario.Text, inventarios, item => item.IdInventario.ToString());
-                    if (checkId == true)
-                    {
-                        Inventario inventario = null;
-                        try
-                        {
-                            inventario = new Inventario
-                            {
-                                IdInventario = txtIdInventario.Text,
-                                IdComputadora = txtIdComputadora.Text,
-                                FechaLlegada = txtFechaLlegada.Text,
-                                PrecioLlegada = int.Parse(txtPrecioLLegada.Text),
-                                Stock = int.Parse(txtStock.Text)
-                            };
-                            logica.RegistrarInventario(inventario);
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
-                    }
-                    logica.ClearTextBoxs(txtIdInventario, txtPrecioLLegada, txtStock, txtFechaLlegada, txtIdComputadora);
-                    txtIdInventario.Enabled = true;
-                    logica.TurnOffLabels(label2, label3, label4, label5);
-                    logica.TurnOffTxtB(txtIdComputadora, txtFechaLlegada, txtPrecioLLegada, txtStock);
-                }
-            }
+            logica.ProcesarInsertar(
+         txtIdInventario.Text,
+         inventarios,
+         item => item.IdInventario.ToString(),
+         () => new Inventario
+         {
+             IdInventario = txtIdInventario.Text,
+             IdComputadora = txtIdComputadora.Text,
+             FechaLlegada = txtFechaLlegada.Text,
+             PrecioLlegada = int.Parse(txtPrecioLLegada.Text),
+             Stock = int.Parse(txtStock.Text)
+         },
+         @"^I\d+$",
+         () => logica.ClearTextBoxs(txtIdInventario, txtPrecioLLegada, txtStock, txtFechaLlegada, txtIdComputadora),
+         new Control[] { txtIdInventario },
+         new Control[] { txtIdComputadora, txtFechaLlegada, txtPrecioLLegada, txtStock }
+     );
         }
 
         private void Inventarios_Load(object sender, EventArgs e)

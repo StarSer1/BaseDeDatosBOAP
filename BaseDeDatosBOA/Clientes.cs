@@ -34,40 +34,23 @@ namespace BaseDeDatosBOA
 
         private void btnInsertar_Click(object sender, EventArgs e)
         {
-
-            bool checkFormat = logica.CheckAllFormats(txtIdCliente.Text, @"^C\d+$");
-            if (checkFormat == false)
-            {
-                MessageBox.Show("error de formato en ID");
-            }
-            else
-            {
-                bool checkId = logica.VerifyID(txtIdCliente.Text, clientes, item => item.IdCliente.ToString());
-                if (checkId == true)
-                {
-                    Cliente cliente = null;
-                    try
-                    {
-                        cliente = new Cliente
-                        {
-                            IdCliente = txtIdCliente.Text,
-                            Nombre = txtNombre.Text,
-                            ApellidoP = txtApellidoP.Text,
-                            ApellidoM = txtApellidoM.Text,
-                            Correo = txtCorreo.Text,
-                        };
-                        logica.RegistrarCliente(cliente);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-                logica.ClearTextBoxs(txtIdCliente, txtNombre, txtApellidoP, txtApellidoM, txtCorreo);
-                txtIdCliente.Enabled = true;
-                logica.TurnOffLabels(label2, label3, label4, label5);
-                logica.TurnOffTxtB(txtNombre, txtApellidoP, txtApellidoM, txtCorreo);
-            }
+            logica.ProcesarInsertar(
+        txtIdCliente.Text,
+        clientes,
+        item => item.IdCliente.ToString(),
+        () => new Cliente
+        {
+            IdCliente = txtIdCliente.Text,
+            Nombre = txtNombre.Text,
+            ApellidoP = txtApellidoP.Text,
+            ApellidoM = txtApellidoM.Text,
+            Correo = txtCorreo.Text
+        },
+        @"^C\d+$",
+        () => logica.ClearTextBoxs(txtIdCliente, txtNombre, txtApellidoP, txtApellidoM, txtCorreo),
+        new Control[] { txtIdCliente },
+        new Control[] { txtNombre, txtApellidoP, txtApellidoM, txtCorreo }
+         );
         }
 
         private void btnModificar_Click(object sender, EventArgs e)

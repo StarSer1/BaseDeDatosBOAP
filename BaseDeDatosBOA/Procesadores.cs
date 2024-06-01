@@ -32,38 +32,21 @@ namespace BaseDeDatosBOA
 
         private void btnInsertar_Click(object sender, EventArgs e)
         {
-            bool checkFormat = logica.CheckAllFormats(txtIdProcesador.Text, @"^P\d+$");
-            if (checkFormat == false)
-            {
-                MessageBox.Show("error de formato en ID");
-            }
-            else
-            {
-                bool checkId = logica.VerifyID(txtIdProcesador.Text, procesador, item => item.IdProcesador.ToString());
-                if (checkId == true)
-                {
-                    Procesador procesador = null;
-                    try
-                    {
-                        procesador = new Procesador
-                        {
-                            IdProcesador = txtIdProcesador.Text,
-                            Marca = txtMarca.Text,
-                            Modelo = txtModelo.Text,
-                        };
-                        logica.RegistrarProcesador(procesador);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-                
-                logica.ClearTextBoxs(this.Controls.OfType<Guna2TextBox>().ToArray());
-                txtIdProcesador.Enabled = true;
-                logica.TurnOffLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                logica.TurnOffTxtB(this.Controls.OfType<Guna2TextBox>().Where((button) => button.Name.ToString() != "txtIdProcesador").ToArray());
-            }
+            logica.ProcesarInsertar(
+         txtIdProcesador.Text,
+         procesador,
+         item => item.IdProcesador.ToString(),
+         () => new Procesador
+         {
+             IdProcesador = txtIdProcesador.Text,
+             Marca = txtMarca.Text,
+             Modelo = txtModelo.Text
+         },
+         @"^P\d+$",
+         () => logica.ClearTextBoxs(this.Controls.OfType<Guna2TextBox>().ToArray()),
+         new Control[] { txtIdProcesador },
+         this.Controls.OfType<Control>().Where(c => c.Name != "txtIdProcesador" && c is Guna2TextBox).ToArray()
+     );
         }
 
         private void btnModificar_Click(object sender, EventArgs e)

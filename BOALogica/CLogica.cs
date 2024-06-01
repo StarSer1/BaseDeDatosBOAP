@@ -17,7 +17,7 @@ namespace BOALogica
         {
             datos = new CDatos();
         }
-        
+
         #region Obtener Tablas
         public List<Computadora> ObtenerComputadoras()
         {
@@ -45,7 +45,7 @@ namespace BOALogica
         }
         public List<Procesador> ObtenerProcesadores()
         {
-            return datos.ObtenerTabla("PROCESADOR", datos.MapProcesador,"idProcesador");
+            return datos.ObtenerTabla("PROCESADOR", datos.MapProcesador, "idProcesador");
         }
         public List<Grafica> ObtenerGraficas()
         {
@@ -652,7 +652,7 @@ namespace BOALogica
         }
         public void TurnOffTxtB(params Guna2TextBox[] textBoxs)
         {
-            foreach(Guna2TextBox textBox in textBoxs)
+            foreach (Guna2TextBox textBox in textBoxs)
             {
                 textBox.Visible = false;
             }
@@ -660,7 +660,7 @@ namespace BOALogica
         }
         public void TurnOffLabels(params Label[] labels)
         {
-            foreach(Label label in labels)
+            foreach (Label label in labels)
             {
                 label.Visible = false;
             }
@@ -803,8 +803,64 @@ namespace BOALogica
                 }
             }
         }
-    
-    }
 
+        //
+        public void ProcesarInsertar<T>(string id, List<T> datos, Func<T, string> getId, Func<T> crearEntidad, string regex, Action limpiar, Control[] controlesActivar, Control[] controlesDesactivar)
+        {
+            bool checkFormat = CheckAllFormats(id, regex);
+            if (checkFormat == false)
+            {
+                MessageBox.Show("Error de formato en ID");
+            }
+            else
+            {
+                bool checkId = VerifyID(id, datos, getId);
+                if (checkId == true)
+                {
+                    try
+                    {
+                        T entidad = crearEntidad();
+                        // Registro de la entidad usando el método apropiado
+                        if (typeof(T) == typeof(Almacenamiento))
+                            RegistrarAlmacenamiento(entidad as Almacenamiento);
+                        else if (typeof(T) == typeof(Cliente))
+                            RegistrarCliente(entidad as Cliente);
+                        else if (typeof(T) == typeof(Computadora))
+                            RegistrarComputadora(entidad as Computadora);
+                        else if (typeof(T) == typeof(Empleado))
+                            RegistrarEmpleado(entidad as Empleado);
+                        else if (typeof(T) == typeof(FuentePoder))
+                            RegistrarFuentesPoder(entidad as FuentePoder);
+                        else if (typeof(T) == typeof(Grafica))
+                            RegistrarGrafica(entidad as Grafica);
+                        else if (typeof(T) == typeof(Inventario))
+                            RegistrarInventario(entidad as Inventario);
+                        else if (typeof(T) == typeof(Procesador))
+                            RegistrarProcesador(entidad as Procesador);
+                        else if (typeof(T) == typeof(Ram))
+                            RegistrarRam(entidad as Ram);
+                        else if (typeof(T) == typeof(TarjetaMadre))
+                            RegistrarTarjetasMadre(entidad as TarjetaMadre);
+                        else if (typeof(T) == typeof(Venta))
+                            RegistrarVenta(entidad as Venta);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+
+                limpiar();
+
+                foreach (var control in controlesActivar)
+                {
+                    control.Enabled = true;
+                }
+
+                TurnOffLabels(controlesDesactivar.OfType<Label>().ToArray());
+                TurnOffTxtB(controlesDesactivar.OfType<Guna2TextBox>().ToArray());
+            }
+        }
+    }
 }
 
