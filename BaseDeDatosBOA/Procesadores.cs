@@ -29,22 +29,7 @@ namespace BaseDeDatosBOA
             ValidadorForm.AgregarValidacion(btnInsertar, txtIdProcesador, txtMarca, txtModelo);
             ValidadorForm.AgregarValidacion(btnModificar, txtIdProcesador, txtMarca, txtModelo);
         }
-        public void LoadData()
-        {
-            try
-            {
-                this.procesador = logica.ObtenerProcesadores();
-                List<Procesador> procesador = logica.ObtenerProcesadores();
-                dgvProcesadores.DataSource = procesador;
-                dgvProcesadores.Tag = "procesador";
-                dgvProcesadores.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(logica.dgvVentasChangeSize);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
-       
+
         private void btnInsertar_Click(object sender, EventArgs e)
         {
             bool checkFormat = logica.CheckAllFormats(txtIdProcesador.Text, @"^P\d+$");
@@ -116,7 +101,7 @@ namespace BaseDeDatosBOA
 
         private void Procesadores_Load(object sender, EventArgs e)
         {
-            LoadData();
+            procesador = logica.LoadDataProcesador(procesador, dgvProcesadores);
         }
         private void AbrirEliminar(string tablaDondeViene)
         {
@@ -132,7 +117,7 @@ namespace BaseDeDatosBOA
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            LoadData();
+            procesador = logica.LoadDataProcesador(procesador, dgvProcesadores);
         }
 
         private void btnConsulta_Click(object sender, EventArgs e)

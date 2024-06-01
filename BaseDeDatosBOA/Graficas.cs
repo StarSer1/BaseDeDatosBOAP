@@ -1,5 +1,6 @@
 ﻿using BOAEntidad;
 using BOALogica;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,20 +30,7 @@ namespace BaseDeDatosBOA
             ValidadorForm.AgregarValidacion(btnInsertar, txtIdGrafica, txtMarca, txtModelo, txtTipo, txtVram);
             ValidadorForm.AgregarValidacion(btnModificar, txtIdGrafica, txtMarca, txtModelo, txtTipo, txtVram);
         }
-        public void LoadData()
-        {
-            try
-            {
-                graficas = logica.ObtenerGraficas();
-                dgvGraficas.DataSource = graficas;
-                dgvGraficas.Tag = "grafica";
-                dgvGraficas.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(logica.dgvVentasChangeSize);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
+        
 
         private void AbrirEliminar(string tablaDondeViene)
         {
@@ -125,7 +113,7 @@ namespace BaseDeDatosBOA
 
         private void Graficas_Load(object sender, EventArgs e)
         {
-            LoadData();
+            graficas = logica.LoadDataGraficas(graficas, dgvGraficas);
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -135,7 +123,7 @@ namespace BaseDeDatosBOA
 
         private void btnActualizar_Click_1(object sender, EventArgs e)
         {
-            LoadData();
+            graficas = logica.LoadDataGraficas(graficas, dgvGraficas);
         }
 
         private void btnConsulta_Click_1(object sender, EventArgs e)

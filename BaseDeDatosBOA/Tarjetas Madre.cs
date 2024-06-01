@@ -32,22 +32,9 @@ namespace BaseDeDatosBOA
 
         private void Tarjetas_Madre_Load(object sender, EventArgs e)
         {
-            LoadData();
+            tarjetasMadres = logica.LoadDataTarjetaMadre(tarjetasMadres, dgvTarjetasMadre);
         }
-        public void LoadData()
-        {
-            try
-            {
-                tarjetasMadres = logica.ObtenerTarjetaMadres();
-                dgvTarjetasMadre.DataSource = tarjetasMadres;
-                dgvTarjetasMadre.Tag = "tarjetaMadre";
-                dgvTarjetasMadre.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(logica.dgvVentasChangeSize);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
+        
 
         private void btnInsertar_Click(object sender, EventArgs e)
         {
@@ -142,7 +129,7 @@ namespace BaseDeDatosBOA
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            LoadData();
+            tarjetasMadres = logica.LoadDataTarjetaMadre(tarjetasMadres, dgvTarjetasMadre);
         }
 
         private void txtRanurasDIMM_KeyPress(object sender, KeyPressEventArgs e)
@@ -182,7 +169,7 @@ namespace BaseDeDatosBOA
 
         private void btnVerificar_Click(object sender, EventArgs e)
         {
-            bool checkId = logica.VerifyID(txtIdTarjetaMadre.Text, tarjetasMadres, item => item.ToString());
+            bool checkId = logica.VerifyID(txtIdTarjetaMadre.Text, tarjetasMadres, item => item.IdTarjetaMadre.ToString());
             if (checkId == true)
             {
                 logica.TurnOnLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());

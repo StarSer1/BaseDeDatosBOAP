@@ -32,21 +32,7 @@ namespace BaseDeDatosBOA
 
         }
 
-        public void LoadData()
-        {
-            try
-            {
-                ventas = logica.ObtenerVentas();
-                ventas = logica.ObtenerVentas();
-                dgvVentas.DataSource = ventas;
-                dgvVentas.Tag = "ventas";
-                dgvVentas.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(logica.dgvVentasChangeSize);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
+       
 
         private void btnInsertar_Click_1(object sender, EventArgs e)
         {
@@ -148,7 +134,7 @@ namespace BaseDeDatosBOA
 
         private void Ventas_Load_1(object sender, EventArgs e)
         {
-            LoadData();
+            ventas =logica.LoadDataVentas(ventas, dgvVentas);
         }
 
         private void AbrirEliminar(string tablaDondeViene)
@@ -165,7 +151,7 @@ namespace BaseDeDatosBOA
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            LoadData();
+            ventas = logica.LoadDataVentas(ventas, dgvVentas);
         }
 
         private void btnConsulta_Click(object sender, EventArgs e)

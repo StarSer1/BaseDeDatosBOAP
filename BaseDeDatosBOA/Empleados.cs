@@ -29,23 +29,6 @@ namespace BaseDeDatosBOA
 
             ValidadorForm.AgregarValidacion(btnModificar, txtIdEmp, txtNombre, txtApellidoP, txtApellidoM, txtRFC, txtSueldo);
         }
-        public void LoadData()
-        {
-            try
-            {
-                empleados = logica.ObtenerEmpleado();
-                empleados = logica.ObtenerEmpleado();
-                dgvEmpleado.DataSource = empleados;
-                dgvEmpleado.Tag = "empleado";
-                dgvEmpleado.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(logica.dgvVentasChangeSize);
-
-                ValidadorForm.AgregarValidacion(btnInsertar, txtIdEmp, txtNombre, txtApellidoP, txtApellidoM, txtRFC, txtSueldo);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
 
         private void btnInsertar_Click(object sender, EventArgs e)
         {
@@ -123,7 +106,7 @@ namespace BaseDeDatosBOA
 
         private void Empleados_Load(object sender, EventArgs e)
         {
-            LoadData();
+            empleados = logica.LoadDataEmpleado(empleados, dgvEmpleado);
         }
         private void AbrirEliminar(string tablaDondeViene)
         {
@@ -139,7 +122,7 @@ namespace BaseDeDatosBOA
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            LoadData();
+            empleados = logica.LoadDataEmpleado(empleados, dgvEmpleado);
         }
 
         private void btnConsulta_Click(object sender, EventArgs e)

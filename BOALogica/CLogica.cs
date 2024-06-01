@@ -17,24 +17,7 @@ namespace BOALogica
         {
             datos = new CDatos();
         }
-        public List<Almacenamiento> LoadDataAlmacenamiento(List<Almacenamiento> datos, Guna2DataGridView dgvX)
-        {
-            try
-            {
-                datos = ObtenerAlmacenamientos();
-                dgvX.DataSource = datos;
-                dgvX.Tag = "almacenamiento";
-                dgvX.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(dgvVentasChangeSize);
-                
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-            return datos;
-
-
-        }
+        
         #region Obtener Tablas
         public List<Computadora> ObtenerComputadoras()
         {
@@ -236,6 +219,316 @@ namespace BOALogica
         }
         #endregion
         #region Validaciones
+        public List<Almacenamiento> LoadDataAlmacenamiento(List<Almacenamiento> datos, Guna2DataGridView dgvX)
+        {
+            try
+            {
+                datos = ObtenerAlmacenamientos();
+                dgvX.DataSource = datos;
+                dgvX.Tag = "almacenamiento";
+                dgvX.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(dgvVentasChangeSize);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            return datos;
+
+
+        }
+        public List<Cliente> LoadDataClientes(List<Cliente> datos, Guna2DataGridView dgvX)
+        {
+            try
+            {
+                datos = ObtenerClientes();
+                dgvX.DataSource = datos;
+                dgvX.Tag = "cliente";
+                dgvX.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(dgvVentasChangeSize);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            return datos;
+        }
+        public List<Grafica> LoadDataGraficas(List<Grafica> datos, Guna2DataGridView dgvX)
+        {
+            try
+            {
+                datos = ObtenerGraficas();
+                dgvX.DataSource = datos;
+                dgvX.Tag = "grafica";
+                dgvX.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(dgvVentasChangeSize);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            return datos;
+        }
+        public List<Ram> LoadDataRam(List<Ram> datos, Guna2DataGridView dgvX)
+        {
+            try
+            {
+                datos = ObtenerRam();
+                dgvX.DataSource = datos;
+                dgvX.Tag = "ram";
+                dgvX.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(dgvVentasChangeSize);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            return datos;
+        }
+        public List<Computadora> LoadDataComputadora(List<Computadora> datos, Guna2DataGridView dgvX)
+        {
+            try
+            {
+                datos = ObtenerComputadoras();
+                dgvX.DataSource = datos;
+                dgvX.Tag = "computadora";
+                dgvX.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(dgvVentasChangeSize);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            return datos;
+        }
+        public List<Empleado> LoadDataEmpleado(List<Empleado> datos, Guna2DataGridView dgvX)
+        {
+            try
+            {
+                datos = ObtenerEmpleado();
+                dgvX.DataSource = datos;
+                dgvX.Tag = "empleado";
+                dgvX.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(dgvVentasChangeSize);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            return datos;
+        }
+        public List<FuentePoder> LoadDataFuenteDePoder(List<FuentePoder> datos, Guna2DataGridView dgvX)
+        {
+            try
+            {
+                datos = ObtenerFuentesDePoder();
+                dgvX.DataSource = datos;
+                dgvX.Tag = "fuentePoder";
+                dgvX.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(dgvVentasChangeSize);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            return datos;
+        }
+        public List<Inventario> LoadDataInventario(List<Inventario> datos, Guna2DataGridView dgvX)
+        {
+            try
+            {
+                datos = ObtenerInventarios();
+                dgvX.DataSource = datos;
+                dgvX.Tag = "inventario";
+                dgvX.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(dgvVentasChangeSize);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            return datos;
+        }
+        public List<Procesador> LoadDataProcesador(List<Procesador> datos, Guna2DataGridView dgvX)
+        {
+            try
+            {
+                datos = ObtenerProcesadores();
+                List<Procesador> procesador = ObtenerProcesadores();
+                dgvX.DataSource = datos;
+                dgvX.Tag = "procesador";
+                dgvX.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(dgvVentasChangeSize);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            return datos;
+        }
+        public List<TarjetaMadre> LoadDataTarjetaMadre(List<TarjetaMadre> datos, Guna2DataGridView dgvX)
+        {
+            try
+            {
+                datos = ObtenerTarjetaMadres();
+                dgvX.DataSource = datos;
+                dgvX.Tag = "tarjetaMadre";
+                dgvX.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(dgvVentasChangeSize);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            return datos;
+        }
+        public List<Venta> LoadDataVentas(List<Venta> datos, Guna2DataGridView dgvX)
+        {
+            try
+            {
+                datos = ObtenerVentas();
+                dgvX.DataSource = datos;
+                dgvX.Tag = "ventas";
+                dgvX.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(dgvVentasChangeSize);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            return datos;
+        }
+        public void consulta(string tablaDeDondeViene, Guna2TextBox txtId, Guna2DataGridView dgvConsulta)
+        {
+            switch (tablaDeDondeViene)
+            {
+                case "VENTA":
+                    string pattern = @"^V\d+$"; // Expresión regular para validar el formato "V" seguido de un número
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtId.Text, pattern))
+                    {
+                        MessageBox.Show("Formato incorrecto. Debe empezar con 'V' seguido de un número.", "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        var ventas = ConsultarVenta(txtId.Text);
+                        dgvConsulta.DataSource = ventas;
+                    }
+                    break;
+                case "INVENTARIO":
+                    string pattern2 = @"^I\d+$"; // Expresión regular para validar el formato "I" seguido de un número
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtId.Text, pattern2))
+                    {
+                        MessageBox.Show("Formato incorrecto. Debe empezar con 'I' seguido de un número.", "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        var inventarios = ConsultarInventario(txtId.Text);
+                        dgvConsulta.DataSource = inventarios;
+                    }
+                    break;
+                case "CLIENTES":
+                    string pattern3 = @"^C\d+$"; // Expresión regular para validar el formato "C" seguido de un número
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtId.Text, pattern3))
+                    {
+                        MessageBox.Show("Formato incorrecto. Debe empezar con 'C' seguido de un número.", "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        var clientes = ConsultarCliente(txtId.Text);
+                        dgvConsulta.DataSource = clientes;
+                    }
+                    break;
+                case "EMPLEADO":
+                    string pattern4 = @"^E\d+$"; // Expresión regular para validar el formato "E" seguido de un número
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtId.Text, pattern4))
+                    {
+                        MessageBox.Show("Formato incorrecto. Debe empezar con 'E' seguido de un número.", "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        var empleado = ConsultarEmpleado(txtId.Text);
+                        dgvConsulta.DataSource = empleado;
+                    }
+                    break;
+                case "COMPUTADORA":
+                    string pattern5 = @"^COM\d+$"; // Expresión regular para validar el formato "COM" seguido de un número
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtId.Text, pattern5))
+                    {
+                        MessageBox.Show("Formato incorrecto. Debe empezar con 'COM' seguido de un número.", "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        var computadora = ConsultarComputadora(txtId.Text);
+                        dgvConsulta.DataSource = computadora;
+                    }
+                    break;
+                case "TARJETAMADRE":
+                    string pattern6 = @"^T\d+$"; // Expresión regular para validar el formato "T" seguido de un número
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtId.Text, pattern6))
+                    {
+                        MessageBox.Show("Formato incorrecto. Debe empezar con 'T' seguido de un número.", "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        var tarjetaMadre = ConsultarTarjetaMadre(txtId.Text);
+                        dgvConsulta.DataSource = tarjetaMadre;
+                    }
+                    break;
+                case "PROCESADOR":
+                    string pattern7 = @"^P\d+$"; // Expresión regular para validar el formato "P" seguido de un número
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtId.Text, pattern7))
+                    {
+                        MessageBox.Show("Formato incorrecto. Debe empezar con 'P' seguido de un número.", "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        var procesador = ConsultarProcesador(txtId.Text);
+                        dgvConsulta.DataSource = procesador;
+                    }
+                    break;
+                case "GRAFICA":
+                    string pattern8 = @"^G\d+$"; // Expresión regular para validar el formato "G" seguido de un número
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtId.Text, pattern8))
+                    {
+                        MessageBox.Show("Formato incorrecto. Debe empezar con 'G' seguido de un número.", "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        var grafica = ConsultarGrafica(txtId.Text);
+                        dgvConsulta.DataSource = grafica;
+                    }
+                    break;
+                case "RAM":
+                    string pattern9 = @"^R\d+$"; // Expresión regular para validar el formato "R" seguido de un número
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtId.Text, pattern9))
+                    {
+                        MessageBox.Show("Formato incorrecto. Debe empezar con 'R' seguido de un número.", "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        var ram = ConsultarRam(txtId.Text);
+                        dgvConsulta.DataSource = ram;
+                    }
+                    break;
+                case "ALMACENAMIENTO":
+                    string pattern10 = @"^A\d+$"; // Expresión regular para validar el formato "A" seguido de un número
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtId.Text, pattern10))
+                    {
+                        MessageBox.Show("Formato incorrecto. Debe empezar con 'A' seguido de un número.", "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        var almacenamiento = ConsultarAlmacenamiento(txtId.Text);
+                        dgvConsulta.DataSource = almacenamiento;
+                    }
+                    break;
+                case "FUENTEPODER":
+                    string pattern11 = @"^F\d+$"; // Expresión regular para validar el formato "F" seguido de un número
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtId.Text, pattern11))
+                    {
+                        MessageBox.Show("Formato incorrecto. Debe empezar con 'F' seguido de un número.", "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        var fuentePoder = ConsultarFuentePoder(txtId.Text);
+                        dgvConsulta.DataSource = fuentePoder;
+                    }
+                    break;
+            }
+        }
         public void SoloNumeros(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))

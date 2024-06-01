@@ -29,20 +29,6 @@ namespace BaseDeDatosBOA
             ValidadorForm.AgregarValidacion(btnInsertar, txtIdFuentePoder, txtMarca, txtModelo, txtPotencia, txtTipo, txtCertificacion);
             ValidadorForm.AgregarValidacion(btnModificar, txtIdFuentePoder, txtMarca, txtModelo, txtPotencia, txtTipo, txtCertificacion);
         }
-        public void LoadData()
-        {
-            try
-            {
-                fuentesPoder = logica.ObtenerFuentesDePoder();
-                dgvFuentesDePoder.DataSource = fuentesPoder;
-                dgvFuentesDePoder.Tag = "fuentePoder";
-                dgvFuentesDePoder.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(logica.dgvVentasChangeSize);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
 
         private void btnInsertar_Click(object sender, EventArgs e)
         {
@@ -119,7 +105,7 @@ namespace BaseDeDatosBOA
 
         private void Fuentes_De_Poder_Load(object sender, EventArgs e)
         {
-            LoadData();
+            fuentesPoder = logica.LoadDataFuenteDePoder(fuentesPoder, dgvFuentesDePoder);
         }
         private void AbrirEliminar(string tablaDondeViene)
         {
@@ -135,7 +121,7 @@ namespace BaseDeDatosBOA
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            LoadData();
+            fuentesPoder = logica.LoadDataFuenteDePoder(fuentesPoder, dgvFuentesDePoder);
         }
 
         private void btnConsulta_Click(object sender, EventArgs e)

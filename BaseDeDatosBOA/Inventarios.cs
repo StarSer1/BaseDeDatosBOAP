@@ -28,20 +28,7 @@ namespace BaseDeDatosBOA
             ValidadorForm.AgregarValidacion(btnInsertar, txtFechaLlegada, txtIdComputadora, txtIdInventario, txtPrecioLLegada, txtStock);
             ValidadorForm.AgregarValidacion(btnModificar, txtFechaLlegada, txtIdComputadora, txtIdInventario, txtPrecioLLegada, txtStock);//agregado
         }
-        public void LoadData()
-        {
-            try
-            {
-                inventarios = logica.ObtenerInventarios();
-                dgvVentas.DataSource = inventarios;
-                dgvVentas.Tag = "inventario";
-                dgvVentas.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(logica.dgvVentasChangeSize);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
+       
         private void AbrirEliminar(string tablaDondeViene)
         {
             Eliminar formEliminar = new Eliminar();
@@ -92,7 +79,7 @@ namespace BaseDeDatosBOA
 
         private void Inventarios_Load(object sender, EventArgs e)
         {
-            LoadData();
+            inventarios = logica.LoadDataInventario(inventarios, dgvVentas);
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -141,7 +128,7 @@ namespace BaseDeDatosBOA
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            LoadData();
+            inventarios = logica.LoadDataInventario(inventarios, dgvVentas);
         }
 
         private void btnConsulta_Click(object sender, EventArgs e)

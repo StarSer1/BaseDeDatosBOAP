@@ -29,25 +29,11 @@ namespace BaseDeDatosBOA
             ValidadorForm.AgregarValidacion(btnInsertar, txtIdRam, txtMarca, txtTipoRam, txtFrecuencia, txtTamaño, txtVelocidadTrans);
             ValidadorForm.AgregarValidacion(btnModificar, txtIdRam, txtMarca, txtTipoRam, txtFrecuencia, txtTamaño, txtVelocidadTrans);//agregado
         }
-        public void LoadData()
-        {
-            try
-            {
-                rams = logica.ObtenerRam();
-                dgvRam.DataSource = rams;
-                dgvRam.Tag = "ram";
-                dgvRam.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(logica.dgvVentasChangeSize);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
+        
 
         private void RAM_Load(object sender, EventArgs e)
         {
-            LoadData();
+            rams = logica.LoadDataRam(rams,dgvRam);
         }
 
         private void btnInsertar_Click(object sender, EventArgs e)
@@ -147,7 +133,7 @@ namespace BaseDeDatosBOA
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            LoadData();
+            rams = logica.LoadDataRam(rams, dgvRam);
         }
 
         private void txtFrecuencia_KeyPress(object sender, KeyPressEventArgs e)

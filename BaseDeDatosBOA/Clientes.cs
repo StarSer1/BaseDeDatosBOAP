@@ -30,21 +30,7 @@ namespace BaseDeDatosBOA
             ValidadorForm.AgregarValidacion(btnModificar, txtIdCliente, txtNombre, txtApellidoP, txtApellidoM, txtCorreo);
 
         }
-        public void LoadData()
-        {
-            try
-            {
-                clientes = logica.ObtenerClientes();
-                dgvClientes.DataSource = clientes;
-                dgvClientes.Tag = "cliente";
-                dgvClientes.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(logica.dgvVentasChangeSize);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
+        
 
         private void btnInsertar_Click(object sender, EventArgs e)
         {
@@ -120,7 +106,7 @@ namespace BaseDeDatosBOA
 
         private void Clientes_Load(object sender, EventArgs e)
         {
-            LoadData();
+            clientes = logica.LoadDataClientes(clientes, dgvClientes);
         }
         private void AbrirEliminar(string tablaDondeViene)
         {
@@ -135,7 +121,7 @@ namespace BaseDeDatosBOA
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            LoadData();
+            clientes = logica.LoadDataClientes(clientes, dgvClientes);
         }
 
         private void btnConsulta_Click(object sender, EventArgs e)

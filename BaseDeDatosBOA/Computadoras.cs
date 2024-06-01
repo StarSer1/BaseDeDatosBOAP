@@ -29,21 +29,7 @@ namespace BaseDeDatosBOA
             ValidadorForm.AgregarValidacion(btnInsertar, txtIdComputadora, txtModelo, txtIdRam, txtIdProcesador, txtIdGrafica, txtIdAlmacenamiento, txtIdTarjetaMadre, txtIdFuentePoder);
             ValidadorForm.AgregarValidacion(btnModificar, txtIdComputadora, txtModelo, txtIdRam, txtIdProcesador, txtIdGrafica, txtIdAlmacenamiento, txtIdTarjetaMadre, txtIdFuentePoder);
         }
-        public void LoadData()
-        {
-            try
-            {
-                computadora = logica.ObtenerComputadoras();
-                dgvComputadora.DataSource = computadora;
-                dgvComputadora.Tag = "computadora";
-                dgvComputadora.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(logica.dgvVentasChangeSize);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
-        
+       
         private void AbrirEliminar(string tablaDondeViene)
         {
             Eliminar formEliminar = new Eliminar();
@@ -261,7 +247,7 @@ namespace BaseDeDatosBOA
 
         private void Computadoras_Load(object sender, EventArgs e)
         {
-            LoadData();
+            computadora = logica.LoadDataComputadora(computadora, dgvComputadora);
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -271,7 +257,7 @@ namespace BaseDeDatosBOA
 
         private void btnActualizar_Click_1(object sender, EventArgs e)
         {
-            LoadData();
+            computadora = logica.LoadDataComputadora(computadora, dgvComputadora);
         }
 
         private void btnConsulta_Click_1(object sender, EventArgs e)
