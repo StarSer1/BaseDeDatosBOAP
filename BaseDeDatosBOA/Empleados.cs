@@ -54,37 +54,23 @@ namespace BaseDeDatosBOA
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            bool checkFormat = logica.CheckAllFormats(txtIdEmp.Text, @"^E\d+$");
-            if (checkFormat == false)
-            {
-                MessageBox.Show("error de formato en ID");
-            }
-            else
-            {
-                Empleado empleado = null;
-                try
-                {
-                    empleado = new Empleado
-                    {
-                        IdEmpleado = txtIdEmp.Text,
-                        Nombre = txtNombre.Text,
-                        ApellidoP = txtApellidoP.Text,
-                        ApellidoM = txtApellidoM.Text,
-                        RFC = txtRFC.Text,
-                        Sueldo = int.Parse(txtSueldo.Text),
-                    };
-                    logica.ModificarEmpleado(empleado);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                txtIdEmp.Enabled = true;
-                btnInsertar.Enabled = true;
-                logica.TurnOffLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                logica.TurnOffTxtB(this.Controls.OfType<Guna2TextBox>().Where((button) => button.Name.ToString() != "txtIdEmp").ToArray());
-                logica.ClearTextBoxs(this.Controls.OfType<Guna2TextBox>().ToArray());
-            }
+            logica.ModificarEntidad(
+        txtIdEmp.Text,
+        @"^E\d+$",
+        () => new Empleado
+        {
+            IdEmpleado = txtIdEmp.Text,
+            Nombre = txtNombre.Text,
+            ApellidoP = txtApellidoP.Text,
+            ApellidoM = txtApellidoM.Text,
+            RFC = txtRFC.Text,
+            Sueldo = int.Parse(txtSueldo.Text),
+        },
+        logica.ModificarEmpleado,
+        this.Controls.OfType<Label>().Where(label => label.Name != "label1").ToArray(),
+        this.Controls.OfType<Guna.UI2.WinForms.Guna2TextBox>().Where(txtBox => txtBox.Name != "txtIdEmp").ToArray(),
+        this.Controls.OfType<Guna.UI2.WinForms.Guna2TextBox>().ToArray()
+    );
         }
 
         private void Empleados_Load(object sender, EventArgs e)

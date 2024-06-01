@@ -70,99 +70,25 @@ namespace BaseDeDatosBOA
             List<TarjetaMadre> tarjMadre = logica.ObtenerTarjetaMadres();
             List<FuentePoder> fuentePod = logica.ObtenerFuentesDePoder();
 
-            bool checkExistence = logica.CheckExistenciaComputadora(txtIdRam.Text, txtIdProcesador.Text, txtIdGrafica.Text, txtIdAlmacenamiento.Text, txtIdTarjetaMadre.Text, txtIdFuentePoder.Text, ram, proce, graf, alma, tarjMadre, fuentePod);
-            if (checkExistence == true)
-            {
-                bool checkFormatCOM = logica.CheckAllFormats(txtIdComputadora.Text, @"^COM\d+$");
-                if (checkFormatCOM == false)
+            logica.ModificarEntidad(
+                txtIdComputadora.Text,
+                @"^COM\d+$",
+                () => new Computadora
                 {
-                    MessageBox.Show("error de formato en ID de COMPUTADORA");
-                }
-                else
-                {
-                    bool checkFormatMOD = logica.CheckAllFormats(txtModelo.Text, @"^BOAC\d+$");
-                    if (checkFormatMOD == false)
-                    {
-                        MessageBox.Show("error de formato en el MODELO");
-                    }
-                    else
-                    {
-                        bool checkFormatRAM = logica.CheckAllFormats(txtModelo.Text, @"^R\d+$");
-                        if (checkFormatRAM == false)
-                        {
-                            MessageBox.Show("error de formato en ID de RAM");
-                        }
-                        else
-                        {
-                            bool checkFormatPROC = logica.CheckAllFormats(txtModelo.Text, @"^P\d+$");
-                            if (checkFormatPROC == false)
-                            {
-                                MessageBox.Show("error de formato en ID de PROCESADOR");
-                            }
-                            else
-                            {
-                                bool checkFormatGRAF = logica.CheckAllFormats(txtModelo.Text, @"^G\d+$");
-                                if (checkFormatGRAF == false)
-                                {
-                                    MessageBox.Show("error de formato en ID de GRAFICA");
-                                }
-                                else
-                                {
-                                    bool checkFormatALMA = logica.CheckAllFormats(txtModelo.Text, @"^A\d+$");
-                                    if (checkFormatALMA == false)
-                                    {
-                                        MessageBox.Show("error de formato en ID de ALMACENAMIENTO");
-                                    }
-                                    else
-                                    {
-                                        bool checkFormatTARJ = logica.CheckAllFormats(txtModelo.Text, @"^T\d+$");
-                                        if (checkFormatTARJ == false)
-                                        {
-                                            MessageBox.Show("error de formato en ID de TARJETA MADRE");
-                                        }
-                                        else
-                                        {
-                                            bool checkFormatFUENT = logica.CheckAllFormats(txtModelo.Text, @"^F\d+$");
-                                            if (checkFormatFUENT == false)
-                                            {
-                                                MessageBox.Show("error de formato en ID de FUENTE DE PODER");
-                                            }
-                                            else
-                                            {
-                                                Computadora computadora = null;
-                                                try
-                                                {
-                                                    computadora = new Computadora
-                                                    {
-                                                        IdComputadora = txtIdComputadora.Text,
-                                                        Modelo = txtModelo.Text,
-                                                        IdRam = txtIdRam.Text,
-                                                        IdProcesador = txtIdProcesador.Text,
-                                                        IdGrafica = txtIdGrafica.Text,
-                                                        IdAlmacenamiento = txtIdAlmacenamiento.Text,
-                                                        IdTarjetaMadre = txtIdTarjetaMadre.Text,
-                                                        IdFuentePoder = txtIdFuentePoder.Text
-                                                    };
-                                                    logica.ModificarComputadora(computadora);
-                                                }
-                                                catch (Exception ex)
-                                                {
-                                                    MessageBox.Show(ex.Message);
-                                                }
-
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    logica.ClearTextBoxs(this.Controls.OfType<Guna2TextBox>().ToArray());
-                    txtIdComputadora.Enabled = true;
-                    logica.TurnOffLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                    logica.TurnOffTxtB(this.Controls.OfType<Guna2TextBox>().Where((button) => button.Name.ToString() != "txtIdComputadora").ToArray());
-                }
-            }
+                    IdComputadora = txtIdComputadora.Text,
+                    Modelo = txtModelo.Text,
+                    IdRam = txtIdRam.Text,
+                    IdProcesador = txtIdProcesador.Text,
+                    IdGrafica = txtIdGrafica.Text,
+                    IdAlmacenamiento = txtIdAlmacenamiento.Text,
+                    IdTarjetaMadre = txtIdTarjetaMadre.Text,
+                    IdFuentePoder = txtIdFuentePoder.Text
+                },
+                logica.ModificarComputadora,
+                this.Controls.OfType<Guna.UI2.WinForms.Guna2TextBox>().ToArray(),
+                this.Controls.OfType<Guna.UI2.WinForms.Guna2TextBox>().Where(txtBox => txtBox.Name != "txtIdComputadora").ToArray(),
+                this.Controls.OfType<Guna.UI2.WinForms.Guna2TextBox>().ToArray()
+            );
         }
 
         private void Computadoras_Load(object sender, EventArgs e)

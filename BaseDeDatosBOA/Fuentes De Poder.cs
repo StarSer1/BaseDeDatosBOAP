@@ -54,37 +54,23 @@ namespace BaseDeDatosBOA
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            bool checkFormat = logica.CheckAllFormats(txtIdFuentePoder.Text, @"^F\d+$");
-            if (checkFormat == false)
-            {
-                MessageBox.Show("error de formato en ID");
-            }
-            else
-            {
-                FuentePoder fuentePoder = null;
-                try
-                {
-                    fuentePoder = new FuentePoder
-                    {
-                        IdFuentePoder = txtIdFuentePoder.Text,
-                        Marca = txtMarca.Text,
-                        Modelo = txtModelo.Text,
-                        Potencia = int.Parse(txtPotencia.Text),
-                        Tipo = txtTipo.Text,
-                        Certificacion = txtCertificacion.Text,
-                    };
-                    logica.ModificarFuentesPoder(fuentePoder);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                txtIdFuentePoder.Enabled = true;
-                btnInsertar.Enabled = true;
-                logica.TurnOffLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                logica.TurnOffTxtB(this.Controls.OfType<Guna2TextBox>().Where((button) => button.Name.ToString() != "txtIdFuentePoder").ToArray());
-                logica.ClearTextBoxs(this.Controls.OfType<Guna2TextBox>().ToArray());
-            }
+            logica.ModificarEntidad(
+        txtIdFuentePoder.Text,
+        @"^F\d+$",
+        () => new FuentePoder
+        {
+            IdFuentePoder = txtIdFuentePoder.Text,
+            Marca = txtMarca.Text,
+            Modelo = txtModelo.Text,
+            Potencia = int.Parse(txtPotencia.Text),
+            Tipo = txtTipo.Text,
+            Certificacion = txtCertificacion.Text,
+        },
+        logica.ModificarFuentesPoder,
+        this.Controls.OfType<Label>().Where(label => label.Name != "label1").ToArray(),
+        this.Controls.OfType<Guna.UI2.WinForms.Guna2TextBox>().Where(txtBox => txtBox.Name != "txtIdFuentePoder").ToArray(),
+        this.Controls.OfType<Guna.UI2.WinForms.Guna2TextBox>().ToArray()
+    );
         }
 
         private void Fuentes_De_Poder_Load(object sender, EventArgs e)

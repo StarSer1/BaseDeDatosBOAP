@@ -66,41 +66,27 @@ namespace BaseDeDatosBOA
         {
             List<Computadora> comp = logica.ObtenerComputadoras();
             bool checkExistence = logica.CheckExistenciaInventario(txtIdComputadora.Text, comp);
-            if (checkExistence == true)
+            if (checkExistence)
             {
-                bool checkFormat = logica.CheckAllFormats(txtIdVenta.Text, @"^V\d+$");
-                if (checkFormat == false)
-                {
-                    MessageBox.Show("error de formato en ID");
-                }
-                else
-                {
-                    Venta venta = null;
-                    try
+                logica.ModificarEntidad(
+                    txtIdVenta.Text,
+                    @"^V\d+$",
+                    () => new Venta
                     {
-                        venta = new Venta
-                        {
-                            IdVenta = txtIdVenta.Text,
-                            IdEmpleado = txtIdEmpleado.Text,
-                            IdComputadora = txtIdComputadora.Text,
-                            IdCliente = txtIdCliente.Text,
-                            FechaVenta = txtFechaCliente.Text,
-                            PrecioFinal = int.Parse(txtPrecioFinal.Text),
-                            PrecioBase = int.Parse(txtPrecioBase.Text),
-                            Descuento = int.Parse(txtDescuento.Text)
-                        };
-                        logica.ModificarVenta(venta);
-                    }
-                    catch (Exception exe)
-                    {
-                        MessageBox.Show(exe.Message);
-                    }
-                    txtIdVenta.Enabled = true;
-                    btnInsertar.Enabled = true;
-                    logica.TurnOffLabels(label2, label3, label4, label5, label6, label7, label8);
-                    logica.TurnOffTxtB(txtIdVenta, txtIdEmpleado, txtIdComputadora, txtIdCliente, txtFechaCliente, txtPrecioFinal, txtPrecioBase, txtDescuento);
-                    logica.ClearTextBoxs(txtIdVenta, txtIdEmpleado, txtIdComputadora, txtIdCliente, txtFechaCliente, txtPrecioFinal, txtPrecioBase, txtDescuento);
-                }
+                        IdVenta = txtIdVenta.Text,
+                        IdEmpleado = txtIdEmpleado.Text,
+                        IdComputadora = txtIdComputadora.Text,
+                        IdCliente = txtIdCliente.Text,
+                        FechaVenta = txtFechaCliente.Text,
+                        PrecioFinal = int.Parse(txtPrecioFinal.Text),
+                        PrecioBase = int.Parse(txtPrecioBase.Text),
+                        Descuento = int.Parse(txtDescuento.Text)
+                    },
+                    logica.ModificarVenta,
+                    new Control[] { label2, label3, label4, label5, label6, label7, label8 },
+                    this.Controls.OfType<Guna.UI2.WinForms.Guna2TextBox>().ToArray(),
+                    this.Controls.OfType<Guna.UI2.WinForms.Guna2TextBox>().ToArray()
+                );
             }
         }
 

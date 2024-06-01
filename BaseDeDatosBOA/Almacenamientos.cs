@@ -82,35 +82,29 @@ namespace BaseDeDatosBOA
         private void btnModificar_Click(object sender, EventArgs e)
         {
             bool checkFormat = logica.CheckAllFormats(txtIdAlmacenamiento.Text, @"^A\d+$");
-            if (checkFormat == false)
+            if (checkFormat)
             {
-                MessageBox.Show("error de formato en ID");
-            }
-            else
-            {
-                try
-                {
-                    Almacenamiento almacenamiento = null;
-                    almacenamiento = new Almacenamiento
+                logica.ModificarEntidad(
+                    txtIdAlmacenamiento.Text,
+                    @"^A\d+$",
+                    () => new Almacenamiento
                     {
                         IdAlmacenamiento = txtIdAlmacenamiento.Text,
                         Marca = txtMarca.Text,
                         Tipo = txtTipo.Text,
                         Capacidad = int.Parse(txtCapacidad.Text),
                         Frecuencia = int.Parse(txtFrecuencia.Text),
-                        VelocidadTransferencia = int.Parse(txtVelocidadTrans.Text)
-                    };
-                    logica.ModificarAlmacenamientos(almacenamiento);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                txtIdAlmacenamiento.Enabled = true;
-                btnInsertar.Enabled = true;
-                logica.TurnOffLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                logica.TurnOffTxtB(this.Controls.OfType<Guna2TextBox>().Where((button) => button.Name.ToString() != "txtIdAlmacenamiento").ToArray());
-                logica.ClearTextBoxs(this.Controls.OfType<Guna2TextBox>().ToArray());
+                        VelocidadTransferencia = int.Parse(txtVelocidadTrans.Text),
+                    },
+                    logica.ModificarAlmacenamientos,
+                    new Control[] { label2, label3, label4, label5 , label6},
+                    new Control[] { txtMarca, txtTipo, txtCapacidad, txtFrecuencia, txtVelocidadTrans },
+                    new Control[] { txtIdAlmacenamiento, txtMarca, txtTipo, txtCapacidad, txtFrecuencia, txtVelocidadTrans }
+                );
+            }
+            else
+            {
+                MessageBox.Show("Error de formato en ID de Almacenamiento");
             }
         }
 

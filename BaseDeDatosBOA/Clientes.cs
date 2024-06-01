@@ -55,36 +55,22 @@ namespace BaseDeDatosBOA
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            bool checkFormat = logica.CheckAllFormats(txtIdCliente.Text, @"^C\d+$");
-            if (checkFormat == false)
-            {
-                MessageBox.Show("error de formato en ID");
-            }
-            else
-            {
-                Cliente cliente = null;
-                try
-                {
-                    cliente = new Cliente
-                    {
-                        IdCliente = txtIdCliente.Text,
-                        Nombre = txtNombre.Text,
-                        ApellidoP = txtApellidoP.Text,
-                        ApellidoM = txtApellidoM.Text,
-                        Correo = txtCorreo.Text,
-                    };
-                    logica.ModificarCliente(cliente);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                txtIdCliente.Enabled = true;
-                btnInsertar.Enabled = true;
-                logica.TurnOffLabels(label2, label3, label4, label5);
-                logica.TurnOffTxtB(txtNombre, txtApellidoP, txtApellidoM, txtCorreo);
-                logica.ClearTextBoxs(txtIdCliente, txtNombre, txtApellidoP, txtApellidoM, txtCorreo);
-            }
+            logica.ModificarEntidad(
+        txtIdCliente.Text,
+        @"^C\d+$",
+        () => new Cliente
+        {
+            IdCliente = txtIdCliente.Text,
+            Nombre = txtNombre.Text,
+            ApellidoP = txtApellidoP.Text,
+            ApellidoM = txtApellidoM.Text,
+            Correo = txtCorreo.Text,
+        },
+        logica.ModificarCliente,
+        this.Controls.OfType<Label>().Where(label => label.Name != "label1").ToArray(),
+        this.Controls.OfType<Guna.UI2.WinForms.Guna2TextBox>().Where(txtBox => txtBox.Name != "txtIdCliente").ToArray(),
+        this.Controls.OfType<Guna.UI2.WinForms.Guna2TextBox>().ToArray()
+    );
         }
 
         private void Clientes_Load(object sender, EventArgs e)

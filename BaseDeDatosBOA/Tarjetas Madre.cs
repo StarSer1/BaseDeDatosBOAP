@@ -60,37 +60,23 @@ namespace BaseDeDatosBOA
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            bool checkFormat = logica.CheckAllFormats(txtIdTarjetaMadre.Text, @"^T\d+$");
-            if (checkFormat == false)
-            {
-                MessageBox.Show("Error de formato en el ID");
-            }
-            else
-            {
-                try
-                {
-                    TarjetaMadre tarjetaMadre = null;
-                    tarjetaMadre = new TarjetaMadre
-                    {
-                        IdTarjetaMadre = txtIdTarjetaMadre.Text,
-                        Marca = txtMarca.Text,
-                        Modelo = txtIdModelo.Text,
-                        RanurasDIMM = int.Parse(txtRanurasDIMM.Text),
-                        Socket = txtSocket.Text,
-                        Dimensiones = txtDimensiones.Text,
-                    };
-                    logica.ModificarTarjetasMadre(tarjetaMadre);
-                }
-                catch (Exception exe)
-                {
-                    MessageBox.Show(exe.Message);
-                }
-                txtIdTarjetaMadre.Enabled = true;
-                btnInsertar.Enabled = true;
-                logica.TurnOffLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                logica.TurnOffTxtB(this.Controls.OfType<Guna2TextBox>().Where((button) => button.Name.ToString() != "txtTarjetaMadre").ToArray());
-                logica.ClearTextBoxs(this.Controls.OfType<Guna2TextBox>().ToArray());
-            }
+            logica.ModificarEntidad(
+        txtIdTarjetaMadre.Text,
+        @"^T\d+$",
+        () => new TarjetaMadre
+        {
+            IdTarjetaMadre = txtIdTarjetaMadre.Text,
+            Marca = txtMarca.Text,
+            Modelo = txtIdModelo.Text,
+            RanurasDIMM = int.Parse(txtRanurasDIMM.Text),
+            Socket = txtSocket.Text,
+            Dimensiones = txtDimensiones.Text,
+        },
+        logica.ModificarTarjetasMadre,
+        this.Controls.OfType<Label>().Where(label => label.Name != "label1").ToArray(),
+        this.Controls.OfType<Guna.UI2.WinForms.Guna2TextBox>().Where(txtBox => txtBox.Name != "txtTarjetaMadre").ToArray(),
+        this.Controls.OfType<Guna.UI2.WinForms.Guna2TextBox>().ToArray()
+    );
         }
         private void AbrirEliminar(string tablaDondeViene)
         {

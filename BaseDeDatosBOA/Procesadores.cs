@@ -51,35 +51,20 @@ namespace BaseDeDatosBOA
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            bool checkFormat = logica.CheckAllFormats(txtIdProcesador.Text, @"^P\d+$");
-            if (checkFormat == false)
-            {
-                MessageBox.Show("error de formato en ID");
-            }
-            else
-            {
-                Procesador procesador = null;
-                try
-                {
-                    procesador = new Procesador
-                    {
-                        IdProcesador = txtIdProcesador.Text,
-                        Marca = txtMarca.Text,
-                        Modelo = txtModelo.Text,
-                    };
-                    logica.ModificarProcesadores(procesador);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                
-                txtIdProcesador.Enabled = true;
-                btnInsertar.Enabled = true;
-                logica.TurnOffLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                logica.TurnOffTxtB(this.Controls.OfType<Guna2TextBox>().Where((button) => button.Name.ToString() != "txtIdProcesador").ToArray());
-                logica.ClearTextBoxs(this.Controls.OfType<Guna2TextBox>().ToArray());
-            }
+            logica.ModificarEntidad(
+        txtIdProcesador.Text,
+        @"^P\d+$",
+        () => new Procesador
+        {
+            IdProcesador = txtIdProcesador.Text,
+            Marca = txtMarca.Text,
+            Modelo = txtModelo.Text,
+        },
+        logica.ModificarProcesadores,
+        this.Controls.OfType<Label>().Where(label => label.Name != "label1").ToArray(),
+        this.Controls.OfType<Guna.UI2.WinForms.Guna2TextBox>().Where(txtBox => txtBox.Name != "txtIdProcesador").ToArray(),
+        this.Controls.OfType<Guna.UI2.WinForms.Guna2TextBox>().ToArray()
+        );
         }
 
         private void Procesadores_Load(object sender, EventArgs e)

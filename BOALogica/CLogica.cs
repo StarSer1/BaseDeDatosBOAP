@@ -917,6 +917,85 @@ namespace BOALogica
             }
         }
 
+        public void ModificarEntidad<T>(
+    string id,
+    string idPattern,
+    Func<T> crearEntidad,
+    Action<T> modificarEntidad,
+    Control[] labels,
+    Control[] textBoxes,
+    Control[] clearTextBoxes,
+    Func<bool> validacionesAdicionales = null)
+        {
+            bool checkFormat = CheckAllFormats(id, idPattern);
+            if (!checkFormat)
+            {
+                MessageBox.Show($"Error de formato en el ID: {idPattern}");
+                return;
+            }
+
+            if (validacionesAdicionales != null && !validacionesAdicionales())
+            {
+                return;
+            }
+
+            try
+            {
+                T entidad = crearEntidad();
+                modificarEntidad(entidad);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+
+            TurnOffLabels(labels);
+            TurnOffTxtB(textBoxes);
+            ClearTextBoxs(clearTextBoxes);
+        }
+
+        private void TurnOffLabels(Control[] labels)
+        {
+            foreach (Control label in labels)
+            {
+                label.Visible = false;
+            }
+        }
+
+        private void TurnOffTxtB(Control[] textBoxes)
+        {
+            foreach (Control textBox in textBoxes)
+            {
+                if (textBox is Guna.UI2.WinForms.Guna2TextBox)
+                {
+                    ((Guna.UI2.WinForms.Guna2TextBox)textBox).Text = "";
+                    textBox.Visible = false;
+                }
+            }
+        }
+
+        private void ClearTextBoxs(Control[] clearTextBoxes)
+        {
+            foreach (Control clearTextBox in clearTextBoxes)
+            {
+                if (clearTextBox is Guna.UI2.WinForms.Guna2TextBox)
+                {
+                    ((Guna.UI2.WinForms.Guna2TextBox)clearTextBox).Text = "";
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
     }
 }
 

@@ -65,38 +65,24 @@ namespace BaseDeDatosBOA
         {
             List<Computadora> comp = logica.ObtenerComputadoras();
             bool checkExistence = logica.CheckExistenciaInventario(txtIdComputadora.Text, comp);
-            if (checkExistence == true)
+            if (checkExistence)
             {
-                bool checkFormat = logica.CheckAllFormats(txtIdInventario.Text, @"^I\d+$");
-                if (checkFormat == false)
-                {
-                    MessageBox.Show("error de formato en ID");
-                }
-                else
-                {
-                    Inventario inventario = null;
-                    try
+                logica.ModificarEntidad(
+                    txtIdInventario.Text,
+                    @"^I\d+$",
+                    () => new Inventario
                     {
-                        inventario = new Inventario
-                        {
-                            IdInventario = txtIdInventario.Text,
-                            IdComputadora = txtIdComputadora.Text,
-                            FechaLlegada = txtFechaLlegada.Text,
-                            PrecioLlegada = int.Parse(txtPrecioLLegada.Text),
-                            Stock = int.Parse(txtStock.Text)
-                        };
-                        logica.ModificarInventario(inventario);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    txtIdInventario.Enabled = true;
-                    btnInsertar.Enabled = true;
-                    logica.TurnOffLabels(label2, label3, label4, label5);
-                    logica.TurnOffTxtB(txtIdComputadora, txtFechaLlegada, txtPrecioLLegada, txtStock);
-                    logica.ClearTextBoxs(txtIdInventario, txtPrecioLLegada, txtStock, txtFechaLlegada, txtIdComputadora);
-                }
+                        IdInventario = txtIdInventario.Text,
+                        IdComputadora = txtIdComputadora.Text,
+                        FechaLlegada = txtFechaLlegada.Text,
+                        PrecioLlegada = int.Parse(txtPrecioLLegada.Text),
+                        Stock = int.Parse(txtStock.Text)
+                    },
+                    logica.ModificarInventario,
+                    new Control[] { label2, label3, label4, label5 },
+                    new Control[] { txtIdComputadora, txtFechaLlegada, txtPrecioLLegada, txtStock },
+                    new Control[] { txtIdInventario, txtPrecioLLegada, txtStock, txtFechaLlegada, txtIdComputadora }
+                );
             }
         }
 

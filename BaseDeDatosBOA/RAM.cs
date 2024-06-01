@@ -60,39 +60,23 @@ namespace BaseDeDatosBOA
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            bool checkFormat = logica.CheckAllFormats(txtIdRam.Text, @"^R\d+$");
-            if (checkFormat == false)
-            {
-                MessageBox.Show("error de formato en ID");
-            }
-            else
-            {
-                    try
-                    {
-                        Ram ram = null;
-                        ram = new Ram
-                        {
-                            IdRam = txtIdRam.Text,
-                            Marca = txtMarca.Text,
-                            TipoRam = txtTipoRam.Text,
-                            Frecuencia = int.Parse(txtFrecuencia.Text),
-                            Tamaño = int.Parse(txtTamaño.Text),
-                            VelocidadTransferencia = int.Parse(txtVelocidadTrans.Text),
-                        };
-                        logica.ModificarRam(ram);
-                    }
-                    catch (Exception exe)
-                    {
-                        MessageBox.Show(exe.Message);
-                    }
-                    
-                    txtIdRam.Enabled = true;
-                    btnInsertar.Enabled = true;
-                    logica.TurnOffLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                    logica.TurnOffTxtB(this.Controls.OfType<Guna2TextBox>().Where((button) => button.Name.ToString() != "txtIdRam").ToArray());
-                    logica.ClearTextBoxs(this.Controls.OfType<Guna2TextBox>().ToArray());
-                
-            }
+            logica.ModificarEntidad(
+        txtIdRam.Text,
+        @"^R\d+$",
+        () => new Ram
+        {
+            IdRam = txtIdRam.Text,
+            Marca = txtMarca.Text,
+            TipoRam = txtTipoRam.Text,
+            Frecuencia = int.Parse(txtFrecuencia.Text),
+            Tamaño = int.Parse(txtTamaño.Text),
+            VelocidadTransferencia = int.Parse(txtVelocidadTrans.Text),
+        },
+        logica.ModificarRam,
+        this.Controls.OfType<Label>().Where(label => label.Name != "label1").ToArray(),
+        this.Controls.OfType<Guna.UI2.WinForms.Guna2TextBox>().Where(txtBox => txtBox.Name != "txtIdRam").ToArray(),
+        this.Controls.OfType<Guna.UI2.WinForms.Guna2TextBox>().ToArray()
+    );
         }
 
         private void AbrirEliminar(string tablaDondeViene)

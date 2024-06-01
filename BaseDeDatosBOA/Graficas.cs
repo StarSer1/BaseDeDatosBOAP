@@ -63,36 +63,22 @@ namespace BaseDeDatosBOA
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            bool checkFormat = logica.CheckAllFormats(txtIdGrafica.Text, @"^G\d+$");
-            if (checkFormat == false)
-            {
-                MessageBox.Show("error de formato en ID");
-            }
-            else
-            {
-                Grafica grafica = null;
-                try
-                {
-                    grafica = new Grafica
-                    {
-                        IdGrafica = txtIdGrafica.Text,
-                        Marca = txtMarca.Text,
-                        Modelo = txtModelo.Text,
-                        Tipo = txtTipo.Text,
-                        Vram = int.Parse(txtVram.Text),
-                    };
-                    logica.ModificarGraficas(grafica);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                txtIdGrafica.Enabled = true;
-                btnInsertar.Enabled = true;
-                logica.TurnOffLabels(label2, label3, label4, label5);
-                logica.TurnOffTxtB(txtMarca, txtModelo, txtTipo, txtVram);
-                logica.ClearTextBoxs(txtIdGrafica, txtMarca, txtModelo, txtTipo, txtVram);
-            }
+            logica.ModificarEntidad(
+        txtIdGrafica.Text,
+        @"^G\d+$",
+        () => new Grafica
+        {
+            IdGrafica = txtIdGrafica.Text,
+            Marca = txtMarca.Text,
+            Modelo = txtModelo.Text,
+            Tipo = txtTipo.Text,
+            Vram = int.Parse(txtVram.Text),
+        },
+        logica.ModificarGraficas,
+        new Control[] { label2, label3, label4, label5 },
+        new Control[] { txtMarca, txtModelo, txtTipo, txtVram },
+        new Control[] { txtIdGrafica, txtMarca, txtModelo, txtTipo, txtVram }
+    );
         }
 
         private void Graficas_Load(object sender, EventArgs e)
