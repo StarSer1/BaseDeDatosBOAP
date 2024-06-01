@@ -84,8 +84,8 @@ namespace BaseDeDatosBOA
                     },
                     logica.ModificarVenta,
                     new Control[] { label2, label3, label4, label5, label6, label7, label8 },
-                    this.Controls.OfType<Guna.UI2.WinForms.Guna2TextBox>().ToArray(),
-                    this.Controls.OfType<Guna.UI2.WinForms.Guna2TextBox>().ToArray()
+                    new Control[] { txtIdEmpleado, txtIdComputadora, txtIdCliente, txtFechaCliente, txtPrecioFinal, txtPrecioBase, txtDescuento },
+                    new Control[] { txtIdEmpleado, txtIdComputadora, txtIdCliente, txtFechaCliente, txtPrecioFinal, txtPrecioBase, txtDescuento }
                 );
             }
         }

@@ -65,17 +65,21 @@ namespace BaseDeDatosBOA
         @"^T\d+$",
         () => new TarjetaMadre
         {
+
             IdTarjetaMadre = txtIdTarjetaMadre.Text,
             Marca = txtMarca.Text,
             Modelo = txtIdModelo.Text,
             RanurasDIMM = int.Parse(txtRanurasDIMM.Text),
             Socket = txtSocket.Text,
             Dimensiones = txtDimensiones.Text,
+
         },
         logica.ModificarTarjetasMadre,
         this.Controls.OfType<Label>().Where(label => label.Name != "label1").ToArray(),
-        this.Controls.OfType<Guna.UI2.WinForms.Guna2TextBox>().Where(txtBox => txtBox.Name != "txtTarjetaMadre").ToArray(),
+        this.Controls.OfType<Guna.UI2.WinForms.Guna2TextBox>().Where(txtBox => txtBox.Name != "txtIdTarjetaMadre").ToArray(),
         this.Controls.OfType<Guna.UI2.WinForms.Guna2TextBox>().ToArray()
+
+
     );
         }
         private void AbrirEliminar(string tablaDondeViene)

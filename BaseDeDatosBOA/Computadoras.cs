@@ -70,25 +70,38 @@ namespace BaseDeDatosBOA
             List<TarjetaMadre> tarjMadre = logica.ObtenerTarjetaMadres();
             List<FuentePoder> fuentePod = logica.ObtenerFuentesDePoder();
 
-            logica.ModificarEntidad(
-                txtIdComputadora.Text,
-                @"^COM\d+$",
-                () => new Computadora
+            bool checkExistence = logica.CheckExistenciaComputadora(txtIdRam.Text, txtIdProcesador.Text, txtIdGrafica.Text, txtIdAlmacenamiento.Text, txtIdTarjetaMadre.Text, txtIdFuentePoder.Text, ram, proce, graf, alma, tarjMadre, fuentePod);
+            if (checkExistence == true)
+            {
+                Computadora computadora = null;
+                try
                 {
-                    IdComputadora = txtIdComputadora.Text,
-                    Modelo = txtModelo.Text,
-                    IdRam = txtIdRam.Text,
-                    IdProcesador = txtIdProcesador.Text,
-                    IdGrafica = txtIdGrafica.Text,
-                    IdAlmacenamiento = txtIdAlmacenamiento.Text,
-                    IdTarjetaMadre = txtIdTarjetaMadre.Text,
-                    IdFuentePoder = txtIdFuentePoder.Text
-                },
-                logica.ModificarComputadora,
-                this.Controls.OfType<Guna.UI2.WinForms.Guna2TextBox>().ToArray(),
-                this.Controls.OfType<Guna.UI2.WinForms.Guna2TextBox>().Where(txtBox => txtBox.Name != "txtIdComputadora").ToArray(),
-                this.Controls.OfType<Guna.UI2.WinForms.Guna2TextBox>().ToArray()
-            );
+                    computadora = new Computadora
+                    {
+                        IdComputadora = txtIdComputadora.Text,
+                        Modelo = txtModelo.Text,
+                        IdRam = txtIdRam.Text,
+                        IdProcesador = txtIdProcesador.Text,
+                        IdGrafica = txtIdGrafica.Text,
+                        IdAlmacenamiento = txtIdAlmacenamiento.Text,
+                        IdTarjetaMadre = txtIdTarjetaMadre.Text,
+                        IdFuentePoder = txtIdFuentePoder.Text
+                    };
+                    logica.ModificarEntidad(
+                        computadora.IdComputadora, // Id
+                        @"^COM\d+$", // Expresión regular para el ID
+                        () => computadora, // Función para crear la entidad
+                        entidad => logica.ModificarComputadora(entidad), // Acción para modificar la entidad
+                        this.Controls.OfType<Label>().Where(label => label.Name != "label1").ToArray(), // Labels a desactivar
+                        this.Controls.OfType<Guna2TextBox>().Where(button => button.Name != "txtIdComputadora").ToArray(), // Textboxes a desactivar
+                        this.Controls.OfType<Guna2TextBox>().ToArray() // Textboxes a limpiar
+                    );
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
 
         private void Computadoras_Load(object sender, EventArgs e)
