@@ -181,38 +181,28 @@ namespace BaseDeDatosBOA
 
         private void btnVerificar_Click(object sender, EventArgs e)
         {
-            bool checkId = logica.VerifyID(txtIdVenta.Text, ventas, item => item.IdVenta.ToString());
-            if (checkId == true)
-            {
-                logica.TurnOnLabels(label2, label3, label4, label5, label6, label7, label8);
-                logica.TurnOnTxtB(txtIdVenta, txtIdEmpleado, txtIdComputadora, txtIdCliente, txtFechaCliente, txtPrecioFinal, txtPrecioBase, txtDescuento);
-
-
-            }
-            else
-            {
-                for (int i = 0; i < ventas.Count; i++)
-                {
-                    if (ventas[i].IdVenta.ToString() == txtIdVenta.Text)
-                    {
-                        logica.TurnOnLabels(label2, label3, label4, label5, label6, label7, label8);
-                        logica.TurnOnTxtB(txtIdVenta, txtIdEmpleado, txtIdComputadora, txtIdCliente, txtFechaCliente, txtPrecioFinal, txtPrecioBase, txtDescuento);
-
-
-                        txtIdComputadora.Text = ventas[i].IdComputadora.ToString();
-                        txtDescuento.Text = ventas[i].Descuento.ToString();
-                        txtFechaCliente.Text = ventas[i].FechaVenta.ToString();
-                        txtIdCliente.Text = ventas[i].IdCliente.ToString();
-                        txtIdEmpleado.Text = ventas[i].IdEmpleado.ToString();
-                        txtIdVenta.Text = ventas[i].IdVenta.ToString();
-                        txtPrecioBase.Text = ventas[i].PrecioBase.ToString();
-                        txtPrecioFinal.Text = ventas[i].PrecioFinal.ToString();
-
-                        txtIdVenta.Enabled = false;
-                        btnInsertar.Enabled = false;
-                    }
-                }
-            }
+            logica.ProcesarVerificacion(
+          txtIdVenta.Text,
+          ventas,
+          item => item.IdVenta.ToString(),
+          item =>
+          {
+              txtIdVenta.Text = item.IdVenta;
+              txtIdEmpleado.Text = item.IdEmpleado;
+              txtIdComputadora.Text = item.IdComputadora;
+              txtIdCliente.Text = item.IdCliente;
+              txtFechaCliente.Text = item.FechaVenta;
+              txtPrecioFinal.Text = item.PrecioFinal.ToString();
+              txtPrecioBase.Text = item.PrecioBase.ToString();
+              txtDescuento.Text = item.Descuento.ToString();
+          },
+          item =>
+          {
+              txtIdVenta.Enabled = false;
+              btnInsertar.Enabled = false;
+          },
+          this.Controls.Cast<Control>().ToArray()
+      );
         }
     }
 }

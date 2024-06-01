@@ -12,6 +12,22 @@ namespace BOALogica
     public class CLogica
     {
         private CDatos datos;
+        public void TurnOffLabels2(params Label[] labels)
+        {
+            foreach (var label in labels)
+            {
+                label.Visible = false;
+            }
+        }
+
+        public void TurnOffTxtB2(params Guna2TextBox[] textBoxes)
+        {
+            foreach (var textBox in textBoxes)
+            {
+                textBox.Enabled = false;
+                textBox.Text = ""; // Limpiar el texto si es necesario
+            }
+        }
 
         public CLogica()
         {
@@ -861,6 +877,46 @@ namespace BOALogica
                 TurnOffTxtB(controlesDesactivar.OfType<Guna2TextBox>().ToArray());
             }
         }
+        //
+
+        public void ProcesarVerificacion<T>(
+    string id,
+    List<T> datos,
+    Func<T, string> getId,
+    Action<T> setValues,
+    Action<T> disableId,
+    Control[] controlesActivar
+)
+        {
+            bool checkId = VerifyID(id, datos, getId);
+            if (checkId)
+            {
+                TurnOnLabels(controlesActivar.OfType<Label>().Where(label => label.Name != "label1").ToArray());
+                TurnOnTxtB(controlesActivar.OfType<Guna2TextBox>().ToArray());
+            }
+            else
+            {
+                foreach (var item in datos)
+                {
+                    if (getId(item) == id)
+                    {
+                        setValues(item);
+                        disableId(item);
+
+                        TurnOnLabels(controlesActivar.OfType<Label>().Where(label => label.Name != "label1").ToArray());
+                        TurnOnTxtB(controlesActivar.OfType<Guna2TextBox>().ToArray());
+
+                        foreach (var control in controlesActivar)
+                        {
+                            control.Enabled = true;
+                        }
+
+                        break;
+                    }
+                }
+            }
+        }
+
     }
 }
 

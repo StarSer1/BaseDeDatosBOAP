@@ -153,33 +153,26 @@ namespace BaseDeDatosBOA
 
         private void btnVerificar_Click(object sender, EventArgs e)
         {
-            bool checkId = logica.VerifyID(txtIdTarjetaMadre.Text, tarjetasMadres, item => item.IdTarjetaMadre.ToString());
-            if (checkId == true)
-            {
-                logica.TurnOnLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                logica.TurnOnTxtB(this.Controls.OfType<Guna2TextBox>().ToArray());
-            }
-            else
-            {
-                for (int i = 0; i < tarjetasMadres.Count; i++)
-                {
-                    if (tarjetasMadres[i].IdTarjetaMadre.ToString() == txtIdTarjetaMadre.Text)
-                    {
-                        logica.TurnOnLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                        logica.TurnOnTxtB(this.Controls.OfType<Guna2TextBox>().ToArray());
-
-                        txtIdTarjetaMadre.Text = tarjetasMadres[i].IdTarjetaMadre.ToString();
-                        txtDimensiones.Text = tarjetasMadres[i].Dimensiones.ToString();
-                        txtIdModelo.Text = tarjetasMadres[i].Modelo.ToString();
-                        txtMarca.Text = tarjetasMadres[i].Marca.ToString();
-                        txtRanurasDIMM.Text = tarjetasMadres[i].RanurasDIMM.ToString();
-                        txtSocket.Text = tarjetasMadres[i].Socket.ToString();
-
-                        txtIdTarjetaMadre.Enabled = false;
-                        btnInsertar.Enabled = false;
-                    }
-                }
-            }
+            logica.ProcesarVerificacion(
+        txtIdTarjetaMadre.Text,
+        tarjetasMadres,
+        item => item.IdTarjetaMadre.ToString(),
+        item =>
+        {
+            txtIdTarjetaMadre.Text = item.IdTarjetaMadre;
+            txtMarca.Text = item.Marca;
+            txtIdModelo.Text = item.Modelo;
+            txtRanurasDIMM.Text = item.RanurasDIMM.ToString();
+            txtSocket.Text = item.Socket;
+            txtDimensiones.Text = item.Dimensiones;
+        },
+        item =>
+        {
+            txtIdTarjetaMadre.Enabled = false;
+            btnInsertar.Enabled = false;
+        },
+        this.Controls.Cast<Control>().ToArray()
+    );
         }
     }
 }

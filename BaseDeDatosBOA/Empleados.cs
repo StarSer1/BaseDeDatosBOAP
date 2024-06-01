@@ -152,35 +152,26 @@ namespace BaseDeDatosBOA
 
         private void btnVerificar_Click(object sender, EventArgs e)
         {
-            bool checkId = logica.VerifyID(txtIdEmp.Text, empleados, item => item.IdEmpleado.ToString());
-            if (checkId == true)
-            {
-                logica.TurnOnLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                logica.TurnOnTxtB(this.Controls.OfType<Guna2TextBox>().ToArray());
-            }
-            else
-            {
-                for (int i = 0; i < empleados.Count; i++)
-                {
-                    if (empleados[i].IdEmpleado.ToString() == txtIdEmp.Text)
-                    {
-                        logica.TurnOnLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                        logica.TurnOnTxtB(this.Controls.OfType<Guna2TextBox>().ToArray());
-
-
-
-                        txtApellidoM.Text = empleados[i].ApellidoM.ToString();
-                        txtApellidoP.Text = empleados[i].ApellidoP.ToString();
-                        txtIdEmp.Text = empleados[i].IdEmpleado.ToString();
-                        txtNombre.Text = empleados[i].Nombre.ToString();
-                        txtRFC.Text = empleados[i].RFC.ToString();
-                        txtSueldo.Text = empleados[i].Sueldo.ToString();
-
-                        txtIdEmp.Enabled = false;
-                        btnInsertar.Enabled = false;
-                    }
-                }
-            }
+            logica.ProcesarVerificacion(
+        txtIdEmp.Text,
+        empleados,
+        item => item.IdEmpleado.ToString(),
+        item =>
+        {
+            txtApellidoM.Text = item.ApellidoM.ToString();
+            txtApellidoP.Text = item.ApellidoP.ToString();
+            txtIdEmp.Text = item.IdEmpleado.ToString();
+            txtNombre.Text = item.Nombre.ToString();
+            txtRFC.Text = item.RFC.ToString();
+            txtSueldo.Text = item.Sueldo.ToString();
+        },
+        item =>
+        {
+            txtIdEmp.Enabled = false;
+            btnInsertar.Enabled = false;
+        },
+        this.Controls.Cast<Control>().ToArray()
+    );
         }
     }
 }

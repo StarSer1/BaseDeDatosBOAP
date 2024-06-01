@@ -127,33 +127,23 @@ namespace BaseDeDatosBOA
 
         private void btnVerificar_Click(object sender, EventArgs e)
         {
-            bool checkId = logica.VerifyID(txtIdProcesador.Text, procesador, item => item.IdProcesador.ToString());
-            if (checkId == true)
-            {
-
-
-                logica.TurnOnLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                logica.TurnOnTxtB(this.Controls.OfType<Guna2TextBox>().ToArray());
-            }
-            else
-            {
-                for (int i = 0; i < procesador.Count; i++)
-                {
-                    if (procesador[i].IdProcesador.ToString() == txtIdProcesador.Text)
-                    {
-                        logica.TurnOnLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                        logica.TurnOnTxtB(this.Controls.OfType<Guna2TextBox>().ToArray());
-                        txtIdProcesador.Text = procesador[i].IdProcesador.ToString();
-                        txtMarca.Text = procesador[i].Marca.ToString();
-                        txtModelo.Text = procesador[i].Modelo.ToString();
-
-
-                        txtIdProcesador.Enabled = false;
-                        btnInsertar.Enabled = false;
-
-                    }
-                }
-            }
+            logica.ProcesarVerificacion(
+          txtIdProcesador.Text,
+          procesador,
+          item => item.IdProcesador.ToString(),
+          item =>
+          {
+              txtIdProcesador.Text = item.IdProcesador;
+              txtMarca.Text = item.Marca;
+              txtModelo.Text = item.Modelo;
+          },
+          item =>
+          {
+              txtIdProcesador.Enabled = false;
+              btnInsertar.Enabled = false;
+          },
+          this.Controls.Cast<Control>().ToArray()
+      );
         }
     }
 }

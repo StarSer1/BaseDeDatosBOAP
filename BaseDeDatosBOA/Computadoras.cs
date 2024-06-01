@@ -234,35 +234,28 @@ namespace BaseDeDatosBOA
 
         private void btnVerificar_Click(object sender, EventArgs e)
         {
-            bool checkId = logica.VerifyID(txtIdComputadora.Text, computadora, item => item.IdComputadora.ToString());
-            if (checkId == true)
-            {
-                logica.TurnOnLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                logica.TurnOnTxtB(this.Controls.OfType<Guna2TextBox>().ToArray());
-            }
-            else
-            {
-                for (int i = 0; i < computadora.Count; i++)
-                {
-                    if (computadora[i].IdComputadora.ToString() == txtIdComputadora.Text)
-                    {
-                        logica.TurnOnLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                        logica.TurnOnTxtB(this.Controls.OfType<Guna2TextBox>().ToArray());
-
-                        txtIdComputadora.Text = computadora[i].IdComputadora.ToString();
-                        txtIdAlmacenamiento.Text = computadora[i].IdAlmacenamiento.ToString();
-                        txtIdFuentePoder.Text = computadora[i].IdFuentePoder.ToString();
-                        txtIdGrafica.Text = computadora[i].IdGrafica.ToString();
-                        txtIdProcesador.Text = computadora[i].IdProcesador.ToString();
-                        txtIdRam.Text = computadora[i].IdRam.ToString();
-                        txtIdTarjetaMadre.Text = computadora[i].IdTarjetaMadre.ToString();
-                        txtModelo.Text = computadora[i].Modelo.ToString();
-
-                        txtIdComputadora.Enabled = false;
-                        btnInsertar.Enabled = false;
-                    }
-                }
-            }
+            logica.ProcesarVerificacion(
+         txtIdComputadora.Text,
+         computadora,
+         item => item.IdComputadora.ToString(),
+         item =>
+         {
+             txtIdComputadora.Text = item.IdComputadora.ToString();
+             txtIdAlmacenamiento.Text = item.IdAlmacenamiento.ToString();
+             txtIdFuentePoder.Text = item.IdFuentePoder.ToString();
+             txtIdGrafica.Text = item.IdGrafica.ToString();
+             txtIdProcesador.Text = item.IdProcesador.ToString();
+             txtIdRam.Text = item.IdRam.ToString();
+             txtIdTarjetaMadre.Text = item.IdTarjetaMadre.ToString();
+             txtModelo.Text = item.Modelo.ToString();
+         },
+         item =>
+         {
+             txtIdComputadora.Enabled = false;
+             btnInsertar.Enabled = false;
+         },
+         this.Controls.Cast<Control>().ToArray()
+     );
         }
     }
 }

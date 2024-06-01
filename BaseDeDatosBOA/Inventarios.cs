@@ -150,33 +150,25 @@ namespace BaseDeDatosBOA
 
         private void btnVerificar_Click(object sender, EventArgs e)
         {
-            bool checkId = logica.VerifyID(txtIdInventario.Text, inventarios, item => item.IdInventario.ToString());
-            if (checkId == true)
-            {
-                logica.TurnOnLabels(label2, label3, label4, label5);
-                logica.TurnOnTxtB(txtIdInventario, txtIdComputadora, txtFechaLlegada, txtPrecioLLegada, txtStock);
-
-            }
-            else
-            {
-                for (int i = 0; i < inventarios.Count; i++)
-                {
-                    if (inventarios[i].IdInventario.ToString() == txtIdInventario.Text)
-                    {
-                        logica.TurnOnLabels(label2, label3, label4, label5);
-                        logica.TurnOnTxtB(txtIdInventario, txtIdComputadora, txtFechaLlegada, txtPrecioLLegada, txtStock);
-
-                        txtIdComputadora.Text = inventarios[i].IdComputadora.ToString();
-                        txtFechaLlegada.Text = inventarios[i].FechaLlegada.ToString();
-                        txtIdInventario.Text = inventarios[i].IdInventario.ToString();
-                        txtPrecioLLegada.Text = inventarios[i].PrecioLlegada.ToString();
-                        txtStock.Text = inventarios[i].Stock.ToString();
-
-                        txtIdInventario.Enabled = false;
-                        btnInsertar.Enabled = false;
-                    }
-                }
-            }
+            logica.ProcesarVerificacion(
+         txtIdInventario.Text,
+         inventarios,
+         item => item.IdInventario.ToString(),
+         item =>
+         {
+             txtIdInventario.Text = item.IdInventario;
+             txtIdComputadora.Text = item.IdComputadora;
+             txtFechaLlegada.Text = item.FechaLlegada;
+             txtPrecioLLegada.Text = item.PrecioLlegada.ToString();
+             txtStock.Text = item.Stock.ToString();
+         },
+         item =>
+         {
+             txtIdInventario.Enabled = false;
+             btnInsertar.Enabled = false;
+         },
+         this.Controls.Cast<Control>().ToArray()
+     );
         }
     }
 }

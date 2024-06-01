@@ -156,34 +156,26 @@ namespace BaseDeDatosBOA
 
         private void btnVerificar_Click(object sender, EventArgs e)
         {
-            bool checkId = logica.VerifyID(txtIdRam.Text, rams, item => item.IdRam.ToString());
-            if (checkId == true)
-            {
-                logica.TurnOnLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                logica.TurnOnTxtB(this.Controls.OfType<Guna2TextBox>().ToArray());
-            }
-            else
-            {
-                for (int i = 0; i < rams.Count; i++)
-                {
-                    if (rams[i].IdRam.ToString() == txtIdRam.Text)
-                    {
-                        logica.TurnOnLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                        logica.TurnOnTxtB(this.Controls.OfType<Guna2TextBox>().ToArray());
-
-                        txtIdRam.Text = rams[i].IdRam.ToString();
-                        txtMarca.Text = rams[i].Marca.ToString();
-                        txtTipoRam.Text = rams[i].TipoRam.ToString();
-                        txtFrecuencia.Text = rams[i].Frecuencia.ToString();
-                        txtTamaño.Text = rams[i].Tamaño.ToString();
-                        txtVelocidadTrans.Text = rams[i].VelocidadTransferencia.ToString();
-
-                        txtIdRam.Enabled = false;
-                        btnInsertar.Enabled = false;
-
-                    }
-                }
-            }
+            logica.ProcesarVerificacion(
+        txtIdRam.Text,
+        rams,
+        item => item.IdRam.ToString(),
+        item =>
+        {
+            txtIdRam.Text = item.IdRam;
+            txtMarca.Text = item.Marca;
+            txtTipoRam.Text = item.TipoRam;
+            txtFrecuencia.Text = item.Frecuencia.ToString();
+            txtTamaño.Text = item.Tamaño.ToString();
+            txtVelocidadTrans.Text = item.VelocidadTransferencia.ToString();
+        },
+        item =>
+        {
+            txtIdRam.Enabled = false;
+            btnInsertar.Enabled = false;
+        },
+        this.Controls.Cast<Control>().ToArray()
+    );
         }
     }
 }

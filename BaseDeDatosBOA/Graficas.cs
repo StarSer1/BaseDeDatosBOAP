@@ -149,33 +149,25 @@ namespace BaseDeDatosBOA
 
         private void btnVerificar_Click(object sender, EventArgs e)
         {
-            bool checkId = logica.VerifyID(txtIdGrafica.Text, graficas, item => item.IdGrafica.ToString());
-            if (checkId == true)
-            {
-                logica.TurnOnLabels(label2, label3, label4, label5);
-                logica.TurnOnTxtB(txtIdGrafica, txtMarca, txtModelo, txtTipo, txtVram);
-            }
-            else
-            {
-                for (int i = 0; i < graficas.Count; i++)
-                {
-                    if (graficas[i].IdGrafica.ToString() == txtIdGrafica.Text)
-                    {
-                        logica.TurnOnLabels(label2, label3, label4, label5);
-                        logica.TurnOnTxtB(txtIdGrafica, txtMarca, txtModelo, txtTipo, txtVram);
-
-                        txtIdGrafica.Text = graficas[i].IdGrafica.ToString();
-                        txtMarca.Text = graficas[i].Marca.ToString();
-                        txtModelo.Text = graficas[i].Modelo.ToString();
-                        txtTipo.Text = graficas[i].Tipo.ToString();
-                        txtVram.Text = graficas[i].Vram.ToString();
-
-                        txtIdGrafica.Enabled = false;
-                        btnInsertar.Enabled = false;
-
-                    }
-                }
-            }
+            logica.ProcesarVerificacion(
+       txtIdGrafica.Text,
+       graficas,
+       item => item.IdGrafica.ToString(),
+       item =>
+       {
+           txtIdGrafica.Text = item.IdGrafica.ToString();
+           txtMarca.Text = item.Marca.ToString();
+           txtModelo.Text = item.Modelo.ToString();
+           txtTipo.Text = item.Tipo.ToString();
+           txtVram.Text = item.Vram.ToString();
+       },
+       item =>
+       {
+           txtIdGrafica.Enabled = false;
+           btnInsertar.Enabled = false;
+       },
+       this.Controls.Cast<Control>().ToArray()
+   );
         }
     }
 }

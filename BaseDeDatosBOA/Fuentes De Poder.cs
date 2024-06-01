@@ -153,34 +153,26 @@ namespace BaseDeDatosBOA
 
         private void btnVerificar_Click(object sender, EventArgs e)
         {
-            bool checkId = logica.VerifyID(txtIdFuentePoder.Text, fuentesPoder, item => item.IdFuentePoder.ToString());
-            if (checkId == true)
-            {
-                logica.TurnOnLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                logica.TurnOnTxtB(this.Controls.OfType<Guna2TextBox>().ToArray());
-            }
-            else
-            {
-                for (int i = 0; i < fuentesPoder.Count; i++)
-                {
-                    if (fuentesPoder[i].IdFuentePoder.ToString() == txtIdFuentePoder.Text)
-                    {
-                        logica.TurnOnLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                        logica.TurnOnTxtB(this.Controls.OfType<Guna2TextBox>().ToArray());
-
-                        txtIdFuentePoder.Text = fuentesPoder[i].IdFuentePoder.ToString();
-                        txtMarca.Text = fuentesPoder[i].Marca.ToString();
-                        txtModelo.Text = fuentesPoder[i].Modelo.ToString();
-                        txtPotencia.Text = fuentesPoder[i].Potencia.ToString();
-                        txtTipo.Text = fuentesPoder[i].Tipo.ToString();
-                        txtCertificacion.Text = fuentesPoder[i].Certificacion.ToString();
-
-                        txtIdFuentePoder.Enabled = false;
-                        btnInsertar.Enabled = false;
-
-                    }
-                }
-            }
+            logica.ProcesarVerificacion(
+        txtIdFuentePoder.Text,
+        fuentesPoder,
+        item => item.IdFuentePoder.ToString(),
+        item =>
+        {
+            txtIdFuentePoder.Text = item.IdFuentePoder.ToString();
+            txtMarca.Text = item.Marca.ToString();
+            txtModelo.Text = item.Modelo.ToString();
+            txtPotencia.Text = item.Potencia.ToString();
+            txtTipo.Text = item.Tipo.ToString();
+            txtCertificacion.Text = item.Certificacion.ToString();
+        },
+        item =>
+        {
+            txtIdFuentePoder.Enabled = false;
+            btnInsertar.Enabled = false;
+        },
+        this.Controls.Cast<Control>().ToArray()
+    );
         }
     }
 }

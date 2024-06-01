@@ -141,33 +141,26 @@ namespace BaseDeDatosBOA
 
         private void btnVerificar_Click(object sender, EventArgs e)
         {
-            bool checkId = logica.VerifyID(txtIdCliente.Text, clientes, item => item.IdCliente.ToString());
-            if (checkId == true)
-            {
-                logica.TurnOnLabels(label2, label3, label4, label5);
-                logica.TurnOnTxtB(txtIdCliente, txtNombre, txtApellidoP, txtApellidoM, txtCorreo);
-            }
-            else
-            {
-                for (int i = 0; i < clientes.Count; i++)
-                {
-                    if (clientes[i].IdCliente.ToString() == txtIdCliente.Text)
-                    {
-                        logica.TurnOnLabels(label2, label3, label4, label5);
-                        logica.TurnOnTxtB(txtIdCliente, txtNombre, txtApellidoP, txtApellidoM, txtCorreo);
-
-                        txtApellidoM.Text = clientes[i].ApellidoM.ToString();
-                        txtApellidoP.Text = clientes[i].ApellidoP.ToString();
-                        txtCorreo.Text = clientes[i].Correo.ToString();
-                        txtIdCliente.Text = clientes[i].IdCliente.ToString();
-                        txtNombre.Text = clientes[i].Nombre.ToString();
-
-
-                        txtIdCliente.Enabled = false;
-                        btnInsertar.Enabled = false;
-                    }
-                }
-            }
+            logica.ProcesarVerificacion(
+        txtIdCliente.Text,
+        clientes,
+        item => item.IdCliente.ToString(),
+        item =>
+        {
+            // Asigna los valores correspondientes a los TextBox
+            txtApellidoM.Text = item.ApellidoM.ToString();
+            txtApellidoP.Text = item.ApellidoP.ToString();
+            txtCorreo.Text = item.Correo.ToString();
+            txtNombre.Text = item.Nombre.ToString();
+        },
+        item =>
+        {
+            // Deshabilita la edición del ID y el botón de insertar
+            txtIdCliente.Enabled = false;
+            btnInsertar.Enabled = false;
+        },
+        new Control[] { label2, label3, label4, label5, txtIdCliente, txtNombre, txtApellidoP, txtApellidoM, txtCorreo } // Controles a activar
+    );
         }
     }
 }

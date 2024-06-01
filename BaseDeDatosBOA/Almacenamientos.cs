@@ -177,36 +177,31 @@ namespace BaseDeDatosBOA
             logica.CambioAMayusculas(sender, e);
         }
 
+
         private void btnVerificar_Click(object sender, EventArgs e)
         {
-            bool checkId = logica.VerifyID(txtIdAlmacenamiento.Text, almacenamiento, item => item.IdAlmacenamiento.ToString());
-            if (checkId == true)
-            {
-                logica.TurnOnLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                logica.TurnOnTxtB(this.Controls.OfType<Guna2TextBox>().ToArray());
-            }
-            else
-            {
-                for (int i = 0; i < almacenamiento.Count; i++)
-                {
-                    if (almacenamiento[i].IdAlmacenamiento.ToString() == txtIdAlmacenamiento.Text)
-                    {
-                        logica.TurnOnLabels(this.Controls.OfType<Label>().Where((label) => label.Name.ToString() != "label1").ToArray());
-                        logica.TurnOnTxtB(this.Controls.OfType<Guna2TextBox>().ToArray());
-
-                        txtIdAlmacenamiento.Text = almacenamiento[i].IdAlmacenamiento.ToString();
-                        txtMarca.Text = almacenamiento[i].Marca.ToString();
-                        txtTipo.Text = almacenamiento[i].Tipo.ToString();
-                        txtCapacidad.Text = almacenamiento[i].Capacidad.ToString();
-                        txtFrecuencia.Text = almacenamiento[i].Frecuencia.ToString();
-                        txtVelocidadTrans.Text = almacenamiento[i].VelocidadTransferencia.ToString();
-
-                        txtIdAlmacenamiento.Enabled = false;
-                        btnInsertar.Enabled = false;
-
-                    }
-                }
-            }
+            logica.ProcesarVerificacion(
+      txtIdAlmacenamiento.Text,
+      almacenamiento,
+      item => item.IdAlmacenamiento.ToString(),
+      item =>
+      {
+          // Asigna los valores correspondientes a los TextBox
+          txtIdAlmacenamiento.Text = item.IdAlmacenamiento.ToString();
+          txtMarca.Text = item.Marca.ToString();
+          txtTipo.Text = item.Tipo.ToString();
+          txtCapacidad.Text = item.Capacidad.ToString();
+          txtFrecuencia.Text = item.Frecuencia.ToString();
+          txtVelocidadTrans.Text = item.VelocidadTransferencia.ToString();
+      },
+      item =>
+      {
+          // Deshabilita la edición del ID y el botón de insertar
+          txtIdAlmacenamiento.Enabled = false;
+          btnInsertar.Enabled = false;
+      },
+      this.Controls.Cast<Control>().ToArray() // Convertir la colección Controls en un arreglo
+  );
         }
     }
 }
