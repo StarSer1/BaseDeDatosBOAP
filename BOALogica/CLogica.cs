@@ -17,6 +17,57 @@ namespace BOALogica
         {
             datos = new CDatos();
         }
+        public void LoadData<T>(List<T> datos, Guna2DataGridView dgvX, string Tabla)
+        {
+            switch (Tabla)
+            {
+                
+                case "VENTAS":
+
+                    break;
+                case "INVENTARIO":
+
+                    break;
+                case "CLIENTES":
+
+                    break;
+                case "EMPLEADO":
+
+                    break;
+                case "COMPUTADORA":
+
+                    break;
+                case "TARJETAMADRE":
+
+                    break;
+                case "PROCESADOR":
+
+                    break;
+                case "GRAFICA":
+
+                    break;
+                case "RAM":
+
+                    break;
+                case "ALMACENAMIENTO":
+                    try
+                    {
+                        datos = ObtenerAlmacenamientos().Cast<T>().ToList(); ;
+                        dgvX.DataSource = datos;
+                        dgvX.Tag = "almacenamiento";
+                        dgvX.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(dgvVentasChangeSize);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                    break;
+                case "FUENTEPODER":
+
+                    break;
+            }
+
+        }
         #region Obtener Tablas
         public List<Computadora> ObtenerComputadoras()
         {
@@ -492,6 +543,8 @@ namespace BOALogica
                 }
             }
         }
+    
     }
+
 }
 

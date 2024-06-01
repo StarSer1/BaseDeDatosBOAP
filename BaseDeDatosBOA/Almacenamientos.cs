@@ -29,20 +29,26 @@ namespace BaseDeDatosBOA
             ValidadorForm.AgregarValidacion(btnInsertar, txtCapacidad, txtFrecuencia, txtIdAlmacenamiento, txtMarca, txtTipo, txtVelocidadTrans);
             ValidadorForm.AgregarValidacion(btnModificar, txtCapacidad, txtFrecuencia, txtIdAlmacenamiento, txtMarca, txtTipo, txtVelocidadTrans);
         }
-        public void LoadData()
-        {
-            try
-            {
-                almacenamiento = logica.ObtenerAlmacenamientos();
-                dgvAlmacenamiento.DataSource = almacenamiento;
-                dgvAlmacenamiento.Tag = "almacenamiento";
-                dgvAlmacenamiento.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(logica.dgvVentasChangeSize);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
+        //public void LoadData <T>(List<T> datos,Guna2DataGridView dgvX, string Tabla)
+        //{
+        //    switch (Tabla)
+        //    {
+        //        case "ALMACENAMIENTO":
+        //            try
+        //            {
+        //                datos = logica.ObtenerAlmacenamientos();
+        //                dgvX.DataSource = almacenamiento;
+        //                dgvX.Tag = "almacenamiento";
+        //                dgvX.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(logica.dgvVentasChangeSize);
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                MessageBox.Show("Error: " + ex.Message);
+        //            }
+        //            break;
+        //    }
+            
+        //}
 
       
         private void btnInsertar_Click(object sender, EventArgs e)
@@ -125,7 +131,8 @@ namespace BaseDeDatosBOA
 
         private void Almacenamientos_Load(object sender, EventArgs e)
         {
-            LoadData();
+            string tabla = "ALMACENAMIENTO";
+            logica.LoadData(almacenamiento, dgvAlmacenamiento, tabla);
         }
         private void AbrirEliminar(string tablaDondeViene)
         {
@@ -141,7 +148,8 @@ namespace BaseDeDatosBOA
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            LoadData();
+            string tabla = "ALMACENAMIENTO";
+            logica.LoadData(almacenamiento, dgvAlmacenamiento, tabla);
         }
 
         private void btnConsulta_Click(object sender, EventArgs e)
