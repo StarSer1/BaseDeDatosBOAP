@@ -17,7 +17,7 @@ namespace BOALogica
         {
             datos = new CDatos();
         }
-        public void LoadData(List<Almacenamiento> datos, Guna2DataGridView dgvX, string Tabla)
+        public List<Almacenamiento> LoadData(List<Almacenamiento> datos, Guna2DataGridView dgvX, string Tabla)
         {
             try
             {
@@ -25,12 +25,13 @@ namespace BOALogica
                 dgvX.DataSource = datos;
                 dgvX.Tag = "almacenamiento";
                 dgvX.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(dgvVentasChangeSize);
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-
+            return datos;
 
 
         }
